@@ -1,0 +1,558 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="20dp"
+    android:orientation="vertical"
+    android:background="@color/white"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nama Barang :  "
+                android:textStyle="bold" />
+
+            <!--            <EditText-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:id="@+id/namabarang"-->
+            <!--                android:text="" />-->
+
+            <!--            <Spinner-->
+            <!--                android:id="@+id/namabarang"-->
+            <!--                android:layout_width="fill_parent"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:backgroundTint="#2ecc71"-->
+            <!--                android:entries="@array/android_dropdown_arrays"-->
+            <!--                android:padding="5dp" />-->
+
+            <!--            <TextView-->
+            <!--                android:layout_width="fill_parent"-->
+            <!--                android:layout_height="fill_parent"-->
+            <!--                android:layout_marginBottom="20dp"-->
+            <!--                android:gravity="bottom|center"-->
+            <!--                android:text="-tobi404-"-->
+            <!--                android:textSize="12sp"-->
+            <!--                android:textStyle="bold" />-->
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="15dp">
+
+            <!-- text view to show the selected item-->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/testView"
+                android:hint="Pilih Barang ..."
+                android:padding="12dp"
+                android:gravity="center_vertical"
+                android:background="@android:drawable/editbox_background"
+                />
+
+
+        </LinearLayout>
+
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="10dp"-->
+<!--            android:orientation="horizontal">-->
+
+<!--            <Spinner-->
+<!--                android:id="@+id/sabun"-->
+<!--                android:layout_width="150dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginRight="50dp"-->
+<!--                android:entries="@array/sabun"-->
+<!--                android:backgroundTint="#2ecc71"-->
+
+<!--                android:padding="5dp" />-->
+
+<!--            <Spinner-->
+<!--                android:id="@+id/shampo"-->
+<!--                android:layout_width="150dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:backgroundTint="#2ecc71"-->
+<!--                android:entries="@array/shampo"-->
+<!--                android:padding="5dp"-->
+<!--                />-->
+
+<!--        </LinearLayout>-->
+
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:layout_marginTop="10dp"-->
+<!--            android:orientation="horizontal">-->
+
+<!--            <Spinner-->
+<!--                android:id="@+id/namabarang"-->
+<!--                android:layout_width="150dp"-->
+<!--                android:layout_marginRight="50dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:backgroundTint="#2ecc71"-->
+<!--                android:entries="@array/cuciPiring"-->
+<!--                android:padding="5dp"-->
+<!--                tools:ignore="DuplicateIds" />-->
+
+<!--            <Spinner-->
+<!--                android:id="@+id/namabarang"-->
+<!--                android:layout_width="150dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:backgroundTint="#2ecc71"-->
+<!--                android:entries="@array/sabunCuci"-->
+<!--                android:padding="5dp"-->
+<!--                tools:ignore="DuplicateIds" />-->
+
+<!--        </LinearLayout>-->
+
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:layout_marginTop="10dp"-->
+<!--            android:orientation="horizontal">-->
+
+<!--            <Spinner-->
+<!--                android:id="@+id/namabarang"-->
+<!--                android:layout_width="150dp"-->
+<!--                android:layout_marginRight="50dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:backgroundTint="#2ecc71"-->
+<!--                android:entries="@array/bumbu"-->
+<!--                android:padding="5dp"-->
+<!--                tools:ignore="DuplicateIds" />-->
+
+<!--            <Spinner-->
+<!--                android:id="@+id/namabarang"-->
+<!--                android:layout_width="150dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:backgroundTint="#2ecc71"-->
+<!--                android:entries="@array/bumbuGlondong"-->
+<!--                android:padding="5dp"-->
+<!--                tools:ignore="DuplicateIds" />-->
+
+<!--        </LinearLayout>-->
+
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:layout_marginTop="10dp"-->
+<!--            android:orientation="horizontal">-->
+
+<!--            <Spinner-->
+<!--                android:id="@+id/namabarang"-->
+<!--                android:layout_width="150dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginRight="50dp"-->
+<!--                android:backgroundTint="#2ecc71"-->
+<!--                android:entries="@array/caos"-->
+<!--                android:padding="5dp"-->
+<!--                tools:ignore="DuplicateIds" />-->
+
+<!--            <Spinner-->
+<!--                android:id="@+id/namabarang"-->
+<!--                android:layout_width="150dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:backgroundTint="#2ecc71"-->
+<!--                android:entries="@array/kecap"-->
+<!--                android:padding="5dp"-->
+<!--                tools:ignore="DuplicateIds" />-->
+
+<!--        </LinearLayout>-->
+
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:layout_marginTop="10dp"-->
+<!--            android:orientation="horizontal">-->
+
+<!--            <Spinner-->
+<!--                android:id="@+id/namabarang"-->
+<!--                android:layout_width="150dp"-->
+<!--                android:layout_marginRight="50dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:backgroundTint="#2ecc71"-->
+<!--                android:entries="@array/mie"-->
+<!--                android:padding="5dp"-->
+<!--                tools:ignore="DuplicateIds" />-->
+
+<!--            <Spinner-->
+<!--                android:id="@+id/namabarang"-->
+<!--                android:layout_width="150dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:backgroundTint="#2ecc71"-->
+<!--                android:entries="@array/minuman"-->
+<!--                android:padding="5dp"-->
+<!--                tools:ignore="DuplicateIds" />-->
+
+<!--        </LinearLayout>-->
+
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:layout_marginTop="10dp"-->
+<!--            android:orientation="horizontal">-->
+
+<!--            <Spinner-->
+<!--                android:id="@+id/namabarang"-->
+<!--                android:layout_width="150dp"-->
+<!--                android:layout_marginRight="50dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:backgroundTint="#2ecc71"-->
+<!--                android:entries="@array/sembako"-->
+<!--                android:padding="5dp"-->
+<!--                tools:ignore="DuplicateIds" />-->
+
+<!--            <Spinner-->
+<!--                android:id="@+id/namabarang"-->
+<!--                android:layout_width="150dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:backgroundTint="#2ecc71"-->
+<!--                android:entries="@array/rokok"-->
+<!--                android:padding="5dp"-->
+<!--                tools:ignore="DuplicateIds" />-->
+
+<!--        </LinearLayout>-->
+
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:layout_marginTop="10dp"-->
+<!--            android:orientation="horizontal">-->
+
+<!--            <Spinner-->
+<!--                android:id="@+id/namabarang"-->
+<!--                android:layout_width="150dp"-->
+<!--                android:layout_marginRight="50dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:backgroundTint="#2ecc71"-->
+<!--                android:entries="@array/obat"-->
+<!--                android:padding="5dp"-->
+<!--                tools:ignore="DuplicateIds" />-->
+
+<!--            <Spinner-->
+<!--                android:id="@+id/namabarang"-->
+<!--                android:layout_width="150dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:backgroundTint="#2ecc71"-->
+<!--                android:entries="@array/pampers"-->
+<!--                android:padding="5dp"-->
+<!--                tools:ignore="DuplicateIds" />-->
+
+<!--        </LinearLayout>-->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Kuantitas        :         "
+                android:textStyle="bold"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/jumlahbeli"
+                android:text=""
+                android:inputType="number"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Harga               :  Rp. "
+                android:textStyle="bold"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/harga"
+                android:text=""
+                android:inputType="number"
+                android:layout_marginBottom="8dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Uang Bayar     :  Rp.  "
+                android:textStyle="bold"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/uangbayar"
+                android:text=""
+                android:inputType="number"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/tombolTambah"
+                android:layout_width="140dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="8dp"
+                android:text="TAMBAH"
+                android:textColor="#ffffff"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/tombolProses"
+                android:layout_width="140dp"
+                android:layout_height="wrap_content"
+                android:text="PROSES"
+                android:textColor="#ffffff"
+                android:textStyle="bold"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginLeft="80dp"/>
+
+        </LinearLayout>
+
+
+<!--        <HorizontalScrollView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent">-->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="20dp"
+                android:background="@android:color/holo_blue_light"
+                android:padding="5dp">
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:text="Produk" />
+
+                <TextView
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:text="Jumlah"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:textAlignment="center"/>
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:textAlignment="center"
+                    android:text="Harga" />
+
+                <TextView
+                    android:layout_width="60dp"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:textAlignment="center"
+                    android:text="Total" />
+
+            </LinearLayout>
+
+<!--        </HorizontalScrollView>-->
+
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="250dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <HorizontalScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical" >
+
+                        <TableLayout
+                            android:layout_width="359dp"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/tablelayoutid">
+
+                            <TableRow
+                                android:id="@+id/rowlay">
+                            </TableRow>
+
+                        </TableLayout>
+
+                    </LinearLayout>
+
+                </HorizontalScrollView>
+
+            </LinearLayout>
+
+        </ScrollView>
+
+        <!--        <TextView-->
+        <!--            android:layout_marginTop="20dp"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:text="Total Belanja "-->
+
+        <!--            android:id="@+id/totalbelanja"-->
+        <!--            android:textStyle="bold"-->
+        <!--            android:textSize="18dp"-->
+        <!--            android:layout_marginBottom="8dp" />-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Total            :  "
+                android:textSize="19dp"
+                android:textStyle="bold"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/totalbelanja"
+                android:editable="false"
+                android:text="" />
+
+        </LinearLayout>
+
+        <!--        <TextView-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:text="Uang Kembali "-->
+
+        <!--            android:id="@+id/uangkembali"-->
+        <!--            android:textStyle="bold"-->
+        <!--            android:textSize="18dp"-->
+        <!--            android:layout_marginBottom="8dp"/>-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Kembalian  :  "
+                android:textSize="19dp"
+                android:textStyle="bold"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/uangkembali"
+                android:editable="false"
+                android:text="" />
+
+        </LinearLayout>
+
+
+        <!--        <TextView-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:text="Keterangan "-->
+
+        <!--            android:id="@+id/keterangan"-->
+        <!--            android:textStyle="bold"-->
+        <!--            android:textSize="18dp"-->
+        <!--            android:layout_marginBottom="8dp"/>-->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Keterangan :  "
+                android:textSize="19dp"
+                android:textStyle="bold"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/keterangan"
+                android:editable="false"
+                android:text="" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <Button
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/tombol2"
+                android:text="RESET DATA"
+                android:textStyle="bold"
+                android:textColor="#ffffFF"/>
+
+            <Button
+                android:layout_width="200dp"
+                android:layout_marginLeft="20dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/tombol3"
+                android:text="KELUAR"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>

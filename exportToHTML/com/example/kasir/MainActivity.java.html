@@ -1,0 +1,2020 @@
+<html>
+<head>
+<title>MainActivity.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cc7832;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #808080;}
+.s3 { color: #6a8759;}
+.s4 { color: #6897bb;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+MainActivity.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">com.example.kasir</span><span class="s0">;</span>
+
+<span class="s0">import </span><span class="s1">androidx.appcompat.app.AlertDialog</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">androidx.appcompat.app.AppCompatActivity</span><span class="s0">;</span>
+
+<span class="s0">import </span><span class="s1">android.content.DialogInterface</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.os.Bundle</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.text.TextUtils</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.view.View</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.widget.AdapterView</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.widget.Button</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.widget.EditText</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.widget.TableLayout</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.widget.TextView</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.widget.Toast</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.widget.TableRow</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.widget.Spinner</span><span class="s0">;</span>
+
+<span class="s0">import </span><span class="s1">java.text.NumberFormat</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">java.util.ArrayList</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">java.util.Locale</span><span class="s0">;</span>
+
+
+<span class="s0">public class </span><span class="s1">MainActivity </span><span class="s0">extends </span><span class="s1">AppCompatActivity {</span>
+    <span class="s0">private </span><span class="s1">EditText edtjumlahbel</span><span class="s0">, </span><span class="s1">edtharga</span><span class="s0">, </span><span class="s1">edtuangbay</span><span class="s0">, </span><span class="s1">edttotalbelanja</span><span class="s0">, </span><span class="s1">edtuangkembali</span><span class="s0">, </span><span class="s1">edtketerangan</span><span class="s0">;</span>
+    <span class="s0">private </span><span class="s1">Button btntambah</span><span class="s0">;</span>
+    <span class="s0">private </span><span class="s1">Button btnhapus</span><span class="s0">;</span>
+    <span class="s0">private </span><span class="s1">Button btnexit</span><span class="s0">;</span>
+    <span class="s0">private </span><span class="s1">Button btnproses</span><span class="s0">;</span>
+<span class="s2">//    private Spinner edtnamabar;</span>
+    <span class="s0">private </span><span class="s1">Spinner edtsabun</span><span class="s0">;</span>
+    <span class="s0">private  </span><span class="s1">Spinner edtshampo</span><span class="s0">;</span>
+    <span class="s0">private </span><span class="s1">Spinner edtcuciPiring</span><span class="s0">;</span>
+    <span class="s0">private </span><span class="s1">Spinner edtsabunCuci</span><span class="s0">;</span>
+    <span class="s0">private </span><span class="s1">Spinner edtbumbu</span><span class="s0">;</span>
+    <span class="s0">private </span><span class="s1">Spinner edtbumbuGlondong</span><span class="s0">;</span>
+    <span class="s0">private  </span><span class="s1">Spinner edtcaos</span><span class="s0">;</span>
+    <span class="s0">private  </span><span class="s1">Spinner edtkecap</span><span class="s0">;</span>
+    <span class="s0">private  </span><span class="s1">Spinner edtmie</span><span class="s0">;</span>
+    <span class="s0">private  </span><span class="s1">Spinner edtminuman</span><span class="s0">;</span>
+    <span class="s0">private  </span><span class="s1">Spinner edtsembako</span><span class="s0">;</span>
+    <span class="s0">private  </span><span class="s1">Spinner edtobat</span><span class="s0">;</span>
+    <span class="s0">private  </span><span class="s1">Spinner edtrokok</span><span class="s0">;</span>
+    <span class="s0">private  </span><span class="s1">Spinner edtpampers</span><span class="s0">;</span>
+
+
+    <span class="s0">private </span><span class="s1">TextView txtnamabar</span><span class="s0">;</span>
+    <span class="s0">private </span><span class="s1">TextView txtjumlahbel</span><span class="s0">;</span>
+    <span class="s0">private </span><span class="s1">TextView txtharga</span><span class="s0">;</span>
+    <span class="s0">private </span><span class="s1">TextView txtuangbay</span><span class="s0">;</span>
+
+    <span class="s0">private </span><span class="s1">TextView txttotalbelanja</span><span class="s0">;</span>
+    <span class="s0">private </span><span class="s1">TextView txtuangkembali</span><span class="s0">;</span>
+    <span class="s0">private </span><span class="s1">TextView txtketerangan</span><span class="s0">;</span>
+
+    <span class="s1">ArrayList&lt;String&gt; barang = </span><span class="s0">new </span><span class="s1">ArrayList&lt;&gt;()</span><span class="s0">;</span>
+    <span class="s1">ArrayList&lt;Integer&gt; jumlah = </span><span class="s0">new </span><span class="s1">ArrayList&lt;&gt;()</span><span class="s0">;</span>
+    <span class="s1">ArrayList&lt;Integer&gt; hrg = </span><span class="s0">new </span><span class="s1">ArrayList&lt;&gt;()</span><span class="s0">;</span>
+    <span class="s1">ArrayList&lt;Integer&gt; ttl = </span><span class="s0">new </span><span class="s1">ArrayList&lt;&gt;()</span><span class="s0">;</span>
+
+    <span class="s0">public </span><span class="s1">String menu_barang</span><span class="s0">;</span>
+
+
+
+    <span class="s1">@Override</span>
+    <span class="s0">protected void </span><span class="s1">onCreate(Bundle savedInstanceState) {</span>
+        <span class="s0">super</span><span class="s1">.onCreate(savedInstanceState)</span><span class="s0">;</span>
+        <span class="s1">setContentView(R.layout.activity_main)</span><span class="s0">;</span>
+        <span class="s1">getSupportActionBar().setTitle(</span><span class="s3">&quot;Kedai Anza&quot;</span><span class="s1">)</span><span class="s0">;</span>
+
+<span class="s2">//        edtnamabar = (Spinner) findViewById(R.id.namabarang);</span>
+        <span class="s1">edtsabun = (Spinner) findViewById(R.id.sabun)</span><span class="s0">;</span>
+        <span class="s1">edtcuciPiring = (Spinner) findViewById(R.id.cuciPiring)</span><span class="s0">;</span>
+        <span class="s1">edtsabunCuci = (Spinner) findViewById(R.id.sabunCuci)</span><span class="s0">;</span>
+        <span class="s1">edtshampo = (Spinner) findViewById(R.id.shampo)</span><span class="s0">;</span>
+        <span class="s1">edtbumbu = (Spinner) findViewById(R.id.bumbu)</span><span class="s0">;</span>
+        <span class="s1">edtbumbuGlondong = (Spinner) findViewById(R.id.bumbuGlondong)</span><span class="s0">;</span>
+        <span class="s1">edtcaos = (Spinner) findViewById(R.id.caos)</span><span class="s0">;</span>
+        <span class="s1">edtkecap = (Spinner) findViewById(R.id.kecap)</span><span class="s0">;</span>
+        <span class="s1">edtmie = (Spinner) findViewById(R.id.mie)</span><span class="s0">;</span>
+        <span class="s1">edtminuman = (Spinner) findViewById(R.id.minuman)</span><span class="s0">;</span>
+        <span class="s1">edtobat = (Spinner) findViewById(R.id.obat)</span><span class="s0">;</span>
+        <span class="s1">edtpampers = (Spinner) findViewById(R.id.pamapers)</span><span class="s0">;</span>
+        <span class="s1">edtrokok = (Spinner) findViewById(R.id.rokok)</span><span class="s0">;</span>
+        <span class="s1">edtsembako = (Spinner) findViewById(R.id.sembako)</span><span class="s0">;</span>
+
+        <span class="s1">edtjumlahbel = (EditText) findViewById(R.id.jumlahbeli)</span><span class="s0">;</span>
+        <span class="s1">edtharga = (EditText) findViewById(R.id.harga)</span><span class="s0">;</span>
+        <span class="s1">edtuangbay = (EditText) findViewById(R.id.uangbayar)</span><span class="s0">;</span>
+        <span class="s1">edttotalbelanja = (EditText) findViewById(R.id.totalbelanja)</span><span class="s0">;</span>
+        <span class="s1">edtuangkembali = (EditText) findViewById(R.id.uangkembali)</span><span class="s0">;</span>
+        <span class="s1">edtketerangan = (EditText) findViewById(R.id.keterangan)</span><span class="s0">;</span>
+
+        <span class="s1">btntambah = (Button) findViewById(R.id.tombolTambah)</span><span class="s0">;</span>
+        <span class="s1">btnhapus = (Button) findViewById(R.id.tombol2)</span><span class="s0">;</span>
+        <span class="s1">btnexit = (Button) findViewById(R.id.tombol3)</span><span class="s0">;</span>
+        <span class="s1">btnproses = (Button) findViewById(R.id.tombolProses)</span><span class="s0">;</span>
+
+<span class="s2">//        txtnamabar = (TextView) findViewById(R.id.namabarang);</span>
+        <span class="s1">txtjumlahbel = (TextView) findViewById(R.id.jumlahbeli)</span><span class="s0">;</span>
+        <span class="s1">txtharga = (TextView) findViewById(R.id.harga)</span><span class="s0">;</span>
+        <span class="s1">txtuangbay = (TextView) findViewById(R.id.uangbayar)</span><span class="s0">;</span>
+        <span class="s1">txttotalbelanja = (TextView) findViewById(R.id.totalbelanja)</span><span class="s0">;</span>
+        <span class="s1">txtuangkembali = (TextView) findViewById(R.id.uangkembali)</span><span class="s0">;</span>
+        <span class="s1">txtketerangan = (TextView) findViewById(R.id.keterangan)</span><span class="s0">;</span>
+
+<span class="s2">//        edtnamabar.setOnItemSelectedListener(new ItemSelectedListener());</span>
+        <span class="s1">edtsabun.setOnItemSelectedListener(</span><span class="s0">new </span><span class="s1">ItemSabun())</span><span class="s0">;</span>
+        <span class="s1">edtshampo.setOnItemSelectedListener(</span><span class="s0">new </span><span class="s1">ItemShampo())</span><span class="s0">;</span>
+        <span class="s1">edtcuciPiring.setOnItemSelectedListener(</span><span class="s0">new </span><span class="s1">ItemcuciPiring())</span><span class="s0">;</span>
+        <span class="s1">edtsabunCuci.setOnItemSelectedListener(</span><span class="s0">new </span><span class="s1">ItemSabunCuci())</span><span class="s0">;</span>
+        <span class="s1">edtbumbu.setOnItemSelectedListener(</span><span class="s0">new </span><span class="s1">ItemBumbu())</span><span class="s0">;</span>
+        <span class="s1">edtbumbuGlondong.setOnItemSelectedListener(</span><span class="s0">new </span><span class="s1">ItemBumbuGlondong())</span><span class="s0">;</span>
+        <span class="s1">edtsembako.setOnItemSelectedListener(</span><span class="s0">new </span><span class="s1">ItemSembako())</span><span class="s0">;</span>
+        <span class="s1">edtrokok.setOnItemSelectedListener(</span><span class="s0">new </span><span class="s1">ItemRokok())</span><span class="s0">;</span>
+        <span class="s1">edtmie.setOnItemSelectedListener(</span><span class="s0">new </span><span class="s1">ItemMie())</span><span class="s0">;</span>
+        <span class="s1">edtminuman.setOnItemSelectedListener(</span><span class="s0">new </span><span class="s1">ItemMinuman())</span><span class="s0">;</span>
+        <span class="s1">edtcaos.setOnItemSelectedListener(</span><span class="s0">new </span><span class="s1">ItemCaos())</span><span class="s0">;</span>
+        <span class="s1">edtcaos.setOnItemSelectedListener(</span><span class="s0">new </span><span class="s1">ItemKecap())</span><span class="s0">;</span>
+        <span class="s1">edtkecap.setOnItemSelectedListener(</span><span class="s0">new </span><span class="s1">ItemObat())</span><span class="s0">;</span>
+        <span class="s1">edtpampers.setOnItemSelectedListener(</span><span class="s0">new </span><span class="s1">ItemPampers())</span><span class="s0">;</span>
+
+<span class="s2">//memberikan action pada tombol tambah</span>
+
+        <span class="s1">btntambah.setOnClickListener(</span><span class="s0">new </span><span class="s1">View.OnClickListener() {</span>
+            <span class="s1">@Override</span>
+            <span class="s0">public void </span><span class="s1">onClick(View view) {</span>
+
+<span class="s2">//                String namabarang = edtnamabar.getSelectedItem().toString().trim();</span>
+                <span class="s1">String sabun = edtsabun.getSelectedItem().toString().trim()</span><span class="s0">;</span>
+                <span class="s1">String shampo = edtshampo.getSelectedItem().toString().trim()</span><span class="s0">;</span>
+                <span class="s1">String cuciPiring = edtcuciPiring.getSelectedItem().toString().trim()</span><span class="s0">;</span>
+                <span class="s1">String sabunCuci = edtsabunCuci.getSelectedItem().toString().trim()</span><span class="s0">;</span>
+                <span class="s1">String bumbu = edtbumbu.getSelectedItem().toString().trim()</span><span class="s0">;</span>
+                <span class="s1">String bumbuGlondong = edtbumbuGlondong.getSelectedItem().toString().trim()</span><span class="s0">;</span>
+                <span class="s1">String sembako = edtsembako.getSelectedItem().toString().trim()</span><span class="s0">;</span>
+                <span class="s1">String minuman = edtminuman.getSelectedItem().toString().trim()</span><span class="s0">;</span>
+                <span class="s1">String rokok = edtrokok.getSelectedItem().toString().trim()</span><span class="s0">;</span>
+                <span class="s1">String caos = edtcaos.getSelectedItem().toString().trim()</span><span class="s0">;</span>
+                <span class="s1">String kecap = edtkecap.getSelectedItem().toString().trim()</span><span class="s0">;</span>
+                <span class="s1">String obat = edtobat.getSelectedItem().toString().trim()</span><span class="s0">;</span>
+                <span class="s1">String mie = edtmie.getSelectedItem().toString().trim()</span><span class="s0">;</span>
+                <span class="s1">String pampers = edtpampers.getSelectedItem().toString().trim()</span><span class="s0">;</span>
+
+                <span class="s1">String jumlahbeli = edtjumlahbel.getText().toString().trim()</span><span class="s0">;</span>
+                <span class="s1">String harga = edtharga.getText().toString().trim()</span><span class="s0">;</span>
+
+                <span class="s0">if</span><span class="s1">(jumlahbeli.equals(</span><span class="s3">&quot;&quot;</span><span class="s1">)){</span>
+                    <span class="s1">AlertDialog alertDialog = </span><span class="s0">new </span><span class="s1">AlertDialog.Builder(MainActivity.</span><span class="s0">this</span><span class="s1">).create()</span><span class="s0">;</span>
+                    <span class="s1">alertDialog.setTitle(</span><span class="s3">&quot;Peringatan!!!&quot;</span><span class="s1">)</span><span class="s0">;</span>
+                    <span class="s1">alertDialog.setMessage(</span><span class="s3">&quot;Harap isi Kuantitas Barang!!&quot;</span><span class="s1">)</span><span class="s0">;</span>
+                    <span class="s1">alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL</span><span class="s0">, </span><span class="s3">&quot;OK&quot;</span><span class="s0">,</span>
+                            <span class="s0">new </span><span class="s1">DialogInterface.OnClickListener() {</span>
+                                <span class="s1">@Override</span>
+                                <span class="s0">public void </span><span class="s1">onClick(DialogInterface dialog</span><span class="s0">, int </span><span class="s1">i) {</span>
+                                    <span class="s1">dialog.dismiss()</span><span class="s0">;</span>
+                                <span class="s1">}</span>
+                            <span class="s1">})</span><span class="s0">;</span>
+                    <span class="s1">alertDialog.show()</span><span class="s0">;</span>
+                <span class="s1">} </span><span class="s0">else </span><span class="s1">{</span>
+
+                    <span class="s0">int </span><span class="s1">jb = Integer.parseInt(jumlahbeli)</span><span class="s0">;</span>
+                    <span class="s0">int </span><span class="s1">h = Integer.parseInt(harga)</span><span class="s0">;</span>
+
+                    <span class="s0">int </span><span class="s1">total = (jb * h)</span><span class="s0">;</span>
+                    <span class="s0">int </span><span class="s1">ttlHarga = </span><span class="s4">0</span><span class="s0">;</span>
+
+<span class="s2">//                    barang.add(namabarang);</span>
+                    
+                    <span class="s1">barang.add(sabun)</span><span class="s0">;</span>
+                    <span class="s1">barang.add(shampo)</span><span class="s0">;</span>
+                    <span class="s1">barang.add(cuciPiring)</span><span class="s0">;</span>
+                    <span class="s1">barang.add(sabunCuci)</span><span class="s0">;</span>
+                    <span class="s1">barang.add(bumbu)</span><span class="s0">;</span>
+                    <span class="s1">barang.add(bumbuGlondong)</span><span class="s0">;</span>
+                    <span class="s1">barang.add(sembako)</span><span class="s0">;</span>
+                    <span class="s1">barang.add(rokok)</span><span class="s0">;</span>
+                    <span class="s1">barang.add(caos)</span><span class="s0">;</span>
+                    <span class="s1">barang.add(kecap)</span><span class="s0">;</span>
+                    <span class="s1">barang.add(obat)</span><span class="s0">;</span>
+                    <span class="s1">barang.add(pampers)</span><span class="s0">;</span>
+                    <span class="s1">barang.add(mie)</span><span class="s0">;</span>
+                    <span class="s1">barang.add(minuman)</span><span class="s0">;</span>
+
+                    <span class="s1">jumlah.add(jb)</span><span class="s0">;</span>
+                    <span class="s1">hrg.add(h)</span><span class="s0">;</span>
+                    <span class="s1">ttl.add(total)</span><span class="s0">;</span>
+
+                    <span class="s1">TableLayout tablelayoutid = (TableLayout)findViewById(R.id.tablelayoutid)</span><span class="s0">;</span>
+                    <span class="s1">TableRow row = (TableRow)getLayoutInflater().inflate(R.layout.layout_row</span><span class="s0">, null</span><span class="s1">)</span><span class="s0">;</span>
+                    <span class="s0">for</span><span class="s1">(</span><span class="s0">int </span><span class="s1">i = </span><span class="s4">0</span><span class="s0">; </span><span class="s1">i &lt; jumlah.size()</span><span class="s0">; </span><span class="s1">i++) {</span>
+                        <span class="s1">((TextView)row.findViewById(R.id.idnama)).setText((CharSequence) barang.get(i))</span><span class="s0">;</span>
+                        <span class="s1">((TextView)row.findViewById(R.id.idnilai_a)).setText(String.valueOf(jumlah.get(i)))</span><span class="s0">;</span>
+                        <span class="s1">((TextView)row.findViewById(R.id.idnilai_b)).setText(String.valueOf(hrg.get(i)))</span><span class="s0">;</span>
+                        <span class="s1">((TextView)row.findViewById(R.id.idnilai_total)).setText(String.valueOf(ttl.get(i)))</span><span class="s0">;</span>
+                    <span class="s1">}</span>
+                    <span class="s1">tablelayoutid.addView(row)</span><span class="s0">;</span>
+
+                    <span class="s0">for</span><span class="s1">(</span><span class="s0">int </span><span class="s1">x = </span><span class="s4">0</span><span class="s0">; </span><span class="s1">x &lt; ttl.size()</span><span class="s0">; </span><span class="s1">x++) {</span>
+                        <span class="s1">ttlHarga = ttlHarga + ttl.get(x)</span><span class="s0">;</span>
+                    <span class="s1">}</span>
+
+                    <span class="s1">edttotalbelanja.setText(String.valueOf(ttlHarga))</span><span class="s0">;</span>
+
+<span class="s2">//                    edtnamabar.setSelection(0);</span>
+                    <span class="s1">edtmie.setSelection(</span><span class="s4">0</span><span class="s1">)</span><span class="s0">;</span>
+                    <span class="s1">edtsabun.setSelection(</span><span class="s4">0</span><span class="s1">)</span><span class="s0">;</span>
+                    <span class="s1">edtcuciPiring.setSelection(</span><span class="s4">0</span><span class="s1">)</span><span class="s0">;</span>
+                    <span class="s1">edtsabunCuci.setSelection(</span><span class="s4">0</span><span class="s1">)</span><span class="s0">;</span>
+                    <span class="s1">edtbumbu.setSelection(</span><span class="s4">0</span><span class="s1">)</span><span class="s0">;</span>
+                    <span class="s1">edtshampo.setSelection(</span><span class="s4">0</span><span class="s1">)</span><span class="s0">;</span>
+                    <span class="s1">edtbumbuGlondong.setSelection(</span><span class="s4">0</span><span class="s1">)</span><span class="s0">;</span>
+                    <span class="s1">edtcaos.setSelection(</span><span class="s4">0</span><span class="s1">)</span><span class="s0">;</span>
+                    <span class="s1">edtkecap.setSelection(</span><span class="s4">0</span><span class="s1">)</span><span class="s0">;</span>
+                    <span class="s1">edtminuman.setSelection(</span><span class="s4">0</span><span class="s1">)</span><span class="s0">;</span>
+                    <span class="s1">edtrokok.setSelection(</span><span class="s4">0</span><span class="s1">)</span><span class="s0">;</span>
+                    <span class="s1">edtsembako.setSelection(</span><span class="s4">0</span><span class="s1">)</span><span class="s0">;</span>
+                    <span class="s1">edtpampers.setSelection(</span><span class="s4">0</span><span class="s1">)</span><span class="s0">;</span>
+                    <span class="s1">edtobat.setSelection(</span><span class="s4">0</span><span class="s1">)</span><span class="s0">;</span>
+
+                    <span class="s1">edtharga.setText(</span><span class="s3">&quot; &quot;</span><span class="s1">)</span><span class="s0">;</span>
+                    <span class="s1">edtuangbay.setText(</span><span class="s3">&quot; &quot;</span><span class="s1">)</span><span class="s0">;</span>
+                    <span class="s1">edtjumlahbel.setText(</span><span class="s3">&quot; &quot;</span><span class="s1">)</span><span class="s0">;</span>
+                <span class="s1">}</span>
+            <span class="s1">}</span>
+        <span class="s1">})</span><span class="s0">;</span>
+
+        <span class="s1">btnhapus.setOnClickListener(</span><span class="s0">new </span><span class="s1">View.OnClickListener() {</span>
+            <span class="s1">@Override</span>
+            <span class="s0">public void </span><span class="s1">onClick(View view) {</span>
+
+<span class="s2">//                edtnamabar.setSelection(0);</span>
+                <span class="s1">edtmie.setSelection(</span><span class="s4">0</span><span class="s1">)</span><span class="s0">;</span>
+                <span class="s1">edtsabun.setSelection(</span><span class="s4">0</span><span class="s1">)</span><span class="s0">;</span>
+                <span class="s1">edtcuciPiring.setSelection(</span><span class="s4">0</span><span class="s1">)</span><span class="s0">;</span>
+                <span class="s1">edtsabunCuci.setSelection(</span><span class="s4">0</span><span class="s1">)</span><span class="s0">;</span>
+                <span class="s1">edtbumbu.setSelection(</span><span class="s4">0</span><span class="s1">)</span><span class="s0">;</span>
+                <span class="s1">edtshampo.setSelection(</span><span class="s4">0</span><span class="s1">)</span><span class="s0">;</span>
+                <span class="s1">edtbumbuGlondong.setSelection(</span><span class="s4">0</span><span class="s1">)</span><span class="s0">;</span>
+                <span class="s1">edtcaos.setSelection(</span><span class="s4">0</span><span class="s1">)</span><span class="s0">;</span>
+                <span class="s1">edtkecap.setSelection(</span><span class="s4">0</span><span class="s1">)</span><span class="s0">;</span>
+                <span class="s1">edtminuman.setSelection(</span><span class="s4">0</span><span class="s1">)</span><span class="s0">;</span>
+                <span class="s1">edtrokok.setSelection(</span><span class="s4">0</span><span class="s1">)</span><span class="s0">;</span>
+                <span class="s1">edtsembako.setSelection(</span><span class="s4">0</span><span class="s1">)</span><span class="s0">;</span>
+                <span class="s1">edtpampers.setSelection(</span><span class="s4">0</span><span class="s1">)</span><span class="s0">;</span>
+                <span class="s1">edtobat.setSelection(</span><span class="s4">0</span><span class="s1">)</span><span class="s0">;</span>
+
+                <span class="s1">txttotalbelanja.setText(</span><span class="s3">&quot; &quot;</span><span class="s1">)</span><span class="s0">;</span>
+                <span class="s1">txtharga.setText(</span><span class="s3">&quot; &quot;</span><span class="s1">)</span><span class="s0">;</span>
+                <span class="s1">txtuangbay.setText(</span><span class="s3">&quot; &quot;</span><span class="s1">)</span><span class="s0">;</span>
+                <span class="s1">txtuangkembali.setText(</span><span class="s3">&quot; &quot;</span><span class="s1">)</span><span class="s0">;</span>
+
+                <span class="s1">txtjumlahbel.setText(</span><span class="s3">&quot; &quot;</span><span class="s1">)</span><span class="s0">;</span>
+                <span class="s1">txtketerangan.setText(</span><span class="s3">&quot; &quot;</span><span class="s1">)</span><span class="s0">;</span>
+
+                <span class="s1">ttl.removeAll(ttl)</span><span class="s0">;</span>
+                <span class="s1">barang.removeAll(barang)</span><span class="s0">;</span>
+                <span class="s1">jumlah.removeAll(jumlah)</span><span class="s0">;</span>
+                <span class="s1">hrg.removeAll(hrg)</span><span class="s0">;</span>
+
+                <span class="s1">TableLayout tablelayoutid = (TableLayout)findViewById(R.id.tablelayoutid)</span><span class="s0">;</span>
+                <span class="s1">TableRow row = (TableRow)getLayoutInflater().inflate(R.layout.layout_row</span><span class="s0">, null</span><span class="s1">)</span><span class="s0">;</span>
+                <span class="s1">tablelayoutid.removeAllViews()</span><span class="s0">;</span>
+
+                <span class="s1">Toast.makeText(getApplicationContext()</span><span class="s0">,</span><span class="s3">&quot;Data sudah direset&quot;</span><span class="s0">, </span><span class="s1">Toast.LENGTH_LONG).show()</span><span class="s0">;</span>
+
+            <span class="s1">}</span>
+        <span class="s1">})</span><span class="s0">;</span>
+
+        <span class="s1">btnexit.setOnClickListener(</span><span class="s0">new </span><span class="s1">View.OnClickListener() {</span>
+            <span class="s0">public void </span><span class="s1">onClick(View view) {</span>
+                <span class="s1">moveTaskToBack(</span><span class="s0">true</span><span class="s1">)</span><span class="s0">;</span>
+            <span class="s1">}</span>
+        <span class="s1">})</span><span class="s0">;</span>
+
+        <span class="s1">btnproses.setOnClickListener(</span><span class="s0">new </span><span class="s1">View.OnClickListener() {</span>
+            <span class="s1">@Override</span>
+            <span class="s0">public void </span><span class="s1">onClick(View view) {</span>
+
+                <span class="s1">String uangbayar = edtuangbay.getText().toString().trim()</span><span class="s0">;</span>
+                <span class="s1">String tl_harga = edttotalbelanja.getText().toString().trim()</span><span class="s0">;</span>
+
+                <span class="s0">if</span><span class="s1">(ttl.size() == </span><span class="s4">0</span><span class="s1">){</span>
+                    <span class="s1">AlertDialog alertDialog = </span><span class="s0">new </span><span class="s1">AlertDialog.Builder(MainActivity.</span><span class="s0">this</span><span class="s1">).create()</span><span class="s0">;</span>
+                    <span class="s1">alertDialog.setTitle(</span><span class="s3">&quot;Peringatan!!!&quot;</span><span class="s1">)</span><span class="s0">;</span>
+                    <span class="s1">alertDialog.setMessage(</span><span class="s3">&quot;Daftar Belanja Masih Kosong!!&quot;</span><span class="s1">)</span><span class="s0">;</span>
+                    <span class="s1">alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL</span><span class="s0">, </span><span class="s3">&quot;OK&quot;</span><span class="s0">,</span>
+                            <span class="s0">new </span><span class="s1">DialogInterface.OnClickListener() {</span>
+                                <span class="s1">@Override</span>
+                                <span class="s0">public void </span><span class="s1">onClick(DialogInterface dialog</span><span class="s0">, int </span><span class="s1">i) {</span>
+                                    <span class="s1">dialog.dismiss()</span><span class="s0">;</span>
+                                <span class="s1">}</span>
+                            <span class="s1">})</span><span class="s0">;</span>
+                    <span class="s1">alertDialog.show()</span><span class="s0">;</span>
+                    <span class="s1">edtuangbay.setText(</span><span class="s3">&quot; &quot;</span><span class="s1">)</span><span class="s0">;</span>
+
+                <span class="s1">} </span><span class="s0">else </span><span class="s1">{</span>
+
+                    <span class="s0">if </span><span class="s1">(TextUtils.isEmpty(uangbayar)) {</span>
+                        <span class="s1">AlertDialog alertDialog = </span><span class="s0">new </span><span class="s1">AlertDialog.Builder(MainActivity.</span><span class="s0">this</span><span class="s1">).create()</span><span class="s0">;</span>
+                        <span class="s1">alertDialog.setTitle(</span><span class="s3">&quot;Peringatan!!!&quot;</span><span class="s1">)</span><span class="s0">;</span>
+                        <span class="s1">alertDialog.setMessage(</span><span class="s3">&quot;Harap isi Uang Bayar!!&quot;</span><span class="s1">)</span><span class="s0">;</span>
+                        <span class="s1">alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL</span><span class="s0">, </span><span class="s3">&quot;OK&quot;</span><span class="s0">,</span>
+                                <span class="s0">new </span><span class="s1">DialogInterface.OnClickListener() {</span>
+                                    <span class="s1">@Override</span>
+                                    <span class="s0">public void </span><span class="s1">onClick(DialogInterface dialog</span><span class="s0">, int </span><span class="s1">i) {</span>
+                                        <span class="s1">dialog.dismiss()</span><span class="s0">;</span>
+                                    <span class="s1">}</span>
+                                <span class="s1">})</span><span class="s0">;</span>
+                        <span class="s1">alertDialog.show()</span><span class="s0">;</span>
+    <span class="s2">//                    Toast.makeText(MainActivity.this, &quot;Form tidak boleh kosong&quot;, Toast.LENGTH_SHORT).show();</span>
+                    <span class="s1">} </span><span class="s0">else </span><span class="s1">{</span>
+
+                        <span class="s0">int </span><span class="s1">ub = Integer.parseInt(uangbayar)</span><span class="s0">;</span>
+                        <span class="s0">int </span><span class="s1">tl = Integer.parseInt(tl_harga)</span><span class="s0">;</span>
+                        <span class="s0">int </span><span class="s1">uangkembalian = (ub - tl)</span><span class="s0">;</span>
+
+                        <span class="s0">if </span><span class="s1">(ub &lt; tl) {</span>
+                            <span class="s1">edtketerangan.setText(</span><span class="s3">&quot;Uang bayar kurang &quot; </span><span class="s1">+ (formatRupiah(-uangkembalian)))</span><span class="s0">;</span>
+                            <span class="s1">txtuangkembali.setText(</span><span class="s3">&quot;0&quot;</span><span class="s1">)</span><span class="s0">;</span>
+                        <span class="s1">} </span><span class="s0">else if </span><span class="s1">(ub == tl) {</span>
+                            <span class="s1">txtketerangan.setText(</span><span class="s3">&quot;Uang Pas&quot;</span><span class="s1">)</span><span class="s0">;</span>
+                            <span class="s1">txtuangkembali.setText(</span><span class="s3">&quot;0&quot;</span><span class="s1">)</span><span class="s0">;</span>
+                        <span class="s1">} </span><span class="s0">else </span><span class="s1">{</span>
+                            <span class="s1">edtketerangan.setText(</span><span class="s3">&quot;Tunggu Kembalian&quot;</span><span class="s1">)</span><span class="s0">;</span>
+                            <span class="s1">edtuangkembali.setText(String.valueOf(formatRupiah(uangkembalian)))</span><span class="s0">;</span>
+                        <span class="s1">}</span>
+
+<span class="s2">//                        edtnamabar.setSelection(0);</span>
+                        <span class="s1">edtmie.setSelection(</span><span class="s4">0</span><span class="s1">)</span><span class="s0">;</span>
+                        <span class="s1">edtsabun.setSelection(</span><span class="s4">0</span><span class="s1">)</span><span class="s0">;</span>
+                        <span class="s1">edtcuciPiring.setSelection(</span><span class="s4">0</span><span class="s1">)</span><span class="s0">;</span>
+                        <span class="s1">edtsabunCuci.setSelection(</span><span class="s4">0</span><span class="s1">)</span><span class="s0">;</span>
+                        <span class="s1">edtbumbu.setSelection(</span><span class="s4">0</span><span class="s1">)</span><span class="s0">;</span>
+                        <span class="s1">edtshampo.setSelection(</span><span class="s4">0</span><span class="s1">)</span><span class="s0">;</span>
+                        <span class="s1">edtbumbuGlondong.setSelection(</span><span class="s4">0</span><span class="s1">)</span><span class="s0">;</span>
+                        <span class="s1">edtcaos.setSelection(</span><span class="s4">0</span><span class="s1">)</span><span class="s0">;</span>
+                        <span class="s1">edtkecap.setSelection(</span><span class="s4">0</span><span class="s1">)</span><span class="s0">;</span>
+                        <span class="s1">edtminuman.setSelection(</span><span class="s4">0</span><span class="s1">)</span><span class="s0">;</span>
+                        <span class="s1">edtrokok.setSelection(</span><span class="s4">0</span><span class="s1">)</span><span class="s0">;</span>
+                        <span class="s1">edtsembako.setSelection(</span><span class="s4">0</span><span class="s1">)</span><span class="s0">;</span>
+                        <span class="s1">edtpampers.setSelection(</span><span class="s4">0</span><span class="s1">)</span><span class="s0">;</span>
+                        <span class="s1">edtobat.setSelection(</span><span class="s4">0</span><span class="s1">)</span><span class="s0">;</span>
+
+                        <span class="s1">edtharga.setText(</span><span class="s3">&quot; &quot;</span><span class="s1">)</span><span class="s0">;</span>
+                        <span class="s1">edtuangbay.setText(</span><span class="s3">&quot; &quot;</span><span class="s1">)</span><span class="s0">;</span>
+                        <span class="s1">edtjumlahbel.setText(</span><span class="s3">&quot; &quot;</span><span class="s1">)</span><span class="s0">;</span>
+
+                    <span class="s1">}</span>
+                <span class="s1">}</span>
+            <span class="s1">}</span>
+        <span class="s1">})</span><span class="s0">;</span>
+
+        <span class="s1">}</span>
+
+<span class="s2">//    public class ItemSelectedListener implements AdapterView.OnItemSelectedListener {</span>
+<span class="s2">//        //get strings of first item</span>
+<span class="s2">//        String firstItem = String.valueOf(edtnamabar.getSelectedItem());</span>
+<span class="s2">//</span>
+<span class="s2">//        public void onItemSelected(AdapterView&lt;?&gt; parent, View view, int pos, long id) {</span>
+<span class="s2">//            if (firstItem.equals(String.valueOf(edtnamabar.getSelectedItem()))) {</span>
+<span class="s2">//            } else {</span>
+<span class="s2">////                Toast.makeText(parent.getContext(),</span>
+<span class="s2">////                        &quot;Anda telah memilih : &quot; + parent.getItemAtPosition(pos).toString(),</span>
+<span class="s2">////                        Toast.LENGTH_LONG).show();</span>
+<span class="s2">//</span>
+<span class="s2">//                menu_barang = (String) edtnamabar.getSelectedItem();</span>
+<span class="s2">//</span>
+<span class="s2">//                switch(menu_barang){</span>
+<span class="s2">//                    // SABUN</span>
+<span class="s2">//                    case &quot;Lifeboy&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;4000&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Nuvo Small&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;3000&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Nuvo Medium&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;4500&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;ZEN&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;4000&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Shinzui&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;5000&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;GIV&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;3000&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Detol&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;4000&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Odol&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;5000&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Rexona Women&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;2500&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Rexona Men&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;2500&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Garnier Renceng&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;4000&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Fair &amp; Lovely&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;4500&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Kapur Barus&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;2000&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Sikat Gigi&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;3500&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//</span>
+<span class="s2">//                    //SHAMPO</span>
+<span class="s2">//                    case &quot;Pantine Kondisioner&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;500&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Sunslik Kondisioner&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;500&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Zinc aneka macam&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;500&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Lifeboy aneka macam&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;500&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Head &amp; Shoulder&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;1000&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Pantine aneka macam&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;1000&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Dove aneka macam&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;1000&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Cleare aneka macam&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;1000&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;KIT&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;2000&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//</span>
+<span class="s2">//                    //SABUN CUCI PIRING</span>
+<span class="s2">//                    case &quot;Sunlight Small&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;500&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Sunlight Medium&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;2000&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Mama Lemon Small&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;500&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Mama Lemon Medium&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;2000&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Ekonomi Small&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;500&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Ekonomi Medium&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;2000&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Ekonomi Big&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;5000&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//</span>
+<span class="s2">//                    //SABUN CUCI</span>
+<span class="s2">//                    case &quot;Rinso Bubuk&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;1000&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Rinso Cair&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;1000&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Soklin Liquid&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;500&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Soklin Bubuk Small&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;500&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Soklin Bubuk Medium&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;1000&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Soklin Antiseptik&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;1000&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Daia&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;1000&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Jazz1&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;1000&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Molto&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;500&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Downie&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;500&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Wipol&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;1000&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Soklin Lantai&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;500&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Rapika&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;500&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Kispray Gold&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;1000&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Kispray Biasa&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;500&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//</span>
+<span class="s2">//                    // BUMBU</span>
+<span class="s2">//                    case &quot;Racik Nasi Goreng Ekstra Pedas&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;2000&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Racik Nasi Goreng Biasa&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;2000&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Racik Tempe&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;2000&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Racik Ayam&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;2000&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Racik Ikan&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;2000&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Racik Sayur Asem&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;2000&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Racik Sayur Sop&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;2000&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Racik Sayur Lodeh&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;2000&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Racik Kangkung&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;2000&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Sajiku Tepung&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;2500&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Saori Saus Tiram&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;3000&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Desaku Sambel Goreng&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;2500&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Desaku Balado&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;2500&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Desaku Kari&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;2500&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Desaku Ketumbar Bubuk&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;500&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Dapur Kita Ketumbar Bubuk&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;1000&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Dapur Kita Balado&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;1000&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Dapur Kita Jinten Bubuk&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;1000&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Dapur Kita Bawang Putih Bubuk&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;500&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Dapur Kita Kayu Manis Bubuk&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;500&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Dapur Kita Kencur Bubuk&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;500&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Dapur Kita Kunyit&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;500&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Berlian Pala Bubuk&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;500&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Daisy Lada Bubuk&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;500&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Ladaku Merica Bubuk&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;1000&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Uleg Sambel Terasi&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;1500&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Bon Cabe&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;500&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Aida&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;2500&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Mama Suka Kuah Bakso&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;500&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Terasi ABC&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;500&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//</span>
+<span class="s2">//                    //BUMBU GLONDING</span>
+<span class="s2">//                    case &quot;Gula Jawa Renceng&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;500&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Asem Renceng&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;500&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Bawang Putih Renceng&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;500&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Kemiri Renceng&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;500&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Merica Renceng&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;500&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//</span>
+<span class="s2">//                    //CAOS</span>
+<span class="s2">//                    case &quot;ABC Kecil&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;500&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;ABC Medium&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;1000&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;ABC Besar&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;3000&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Indofood Small&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;1000&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//</span>
+<span class="s2">//                    //KECAP</span>
+<span class="s2">//                    case &quot;Bango Medium&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;1000&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Bango Big&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;3000&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Sedap Small&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;500&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Sedap Big&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;2000&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;ABC Small&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;500&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;ABC Big&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;2000&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//</span>
+<span class="s2">//                    //MIE INSTAN</span>
+<span class="s2">//                    case &quot;Sedap Goreng&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;3500&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Sedap Ayam Limau&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;3500&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Sedap Korea&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;3500&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Sedap Kari&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;3000&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Sedap Ayam Bawang&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;3000&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Sedap Soto&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;3000&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Sedap Bakso&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;3000&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Sedap Singapure&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;3000&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Indomie Goreng&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;3500&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Indomie Rendang&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;3500&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Indomie Ayam Geprek&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;3500&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Indomie Aceh&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;3500&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Indomie Ayam Bawang Spesial&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;3000&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Indomie Soto Banjar&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;3000&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Indomie Seblak Jeletot&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;3000&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Supermie Ayam Bawang&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;3000&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Sarimi Ayam Bawang&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;3000&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Sukses Ayam Kecap&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;4000&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Sukses Ayam Kremes&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;4000&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Sukses Ayam Bawang&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;4000&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Sukses Soto&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;4000&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Sukses Kari&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;4000&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//</span>
+<span class="s2">//                    //MINUMAN</span>
+<span class="s2">//                    case &quot;Lemineral 600ml&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;3000&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Lemineral 330ml&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;2000&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Susu Milku&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;3000&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Susu Kotak&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;3000&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Larutan Botol&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;4000&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Larutan Kaleng&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;7000&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Ager-ager Walet&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;1500&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Nutrijel&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;4000&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//</span>
+<span class="s2">//                    //SEMBAKO</span>
+<span class="s2">//                    case &quot;Beras 1 Kg&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;11000&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Beras 1/2 Kg&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;5500&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Beras 3/4 Kg&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;85000&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Gula 1 Kg&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;15000&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Gula 1/2 Kg&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;7500&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Gula 1/4 Kg&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;4000&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Gula Renceng&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;1500&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Tepung Beras (Glepongan) 1 Kg&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;12000&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Tepung Beras (Glepongan) 1/2 Kg&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;6000&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Tepung Beras (Glepongan) 1/4 Kg&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;3000&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Tepung Beras (Glepongan) 1 Ons&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;1500&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Tepung Aci 1 Kg&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;12000&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Tepung Aci 1/2 Kg&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;6000&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Tepung Aci 1/4 Kg&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;3000&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Tepung Aci 1 Ons&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;1500&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Tepung Padi&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;3000&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Tepung Trigu 1 Kg&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;12000&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Tepung Trigu 1/2 Kg&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;6000&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Tepung Trigu 1/4 Kg&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;3000&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Tepung Trigu 1 Ons&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;1500&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Telor 1 Butir&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;2000&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Telor 1 Kg&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;30000&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Telor 1/2 Kg&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;15000&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Telor 1/4 Kg&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;7500&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Minyak Goreng Renceng&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;1500&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Minyak Goreng 1 Kg&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;14000&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Minyak Goreng 1/2 Kg&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;7000&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Minyak Goreng 1/4 Kg&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;4500&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Sari Kecut&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;3000&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Garam Daun&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;2000&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Teh Biru&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;2000&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Teh Kuning 1&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;1000&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Teh Kuning 3&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;2000&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Teh Celup Kotak&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;10000&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Teh Celup Renceng&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;2000&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//</span>
+<span class="s2">//                    //ROKOK</span>
+<span class="s2">//                    case &quot;Sampoerna Mild&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;28000&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Surya 16&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;29000&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Surya 12&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;23000&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Surya Isi 6 Batang&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;12000&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Surya Isi 8&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;15000&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Filter&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;23000&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;FIlter 1/2&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;12000&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Signature&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;21000&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Signature 1/2&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;11000&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Pro Mild Merah&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;25000&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Gudang Garam Merah&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;15000&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Dji Sam Soe&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;21000&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Rokok 1 Batang&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;2000&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//</span>
+<span class="s2">//                    //OBAT</span>
+<span class="s2">//                    case &quot;Bodrex Biasa 1 Biji&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;1000&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Bodrex Biasa 2 Biji&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;1500&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Bodrex Biasa 3 Biji&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;2000&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Bodrexin&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;500&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Bodrex PE&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;1000&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Bodrex Migran&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;1000&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Bodrex Extra&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;1000&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Panadol&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;1500&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Oskadon Sakit Kepala&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;1000&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Oskadon SP&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;1000&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Paramex Biasa&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;1000&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Mixagrip Flu &amp; Batuk&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;1000&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Konidin&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;1000&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Naspro&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;1000&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Pilkita&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;2000&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Supertetra&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;2000&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Neo Rheumacyl&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;1000&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Entrostop&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;1000&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Fatigon&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;2000&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Promax&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;1000&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Amoxilin&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;1000&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Pil Dumex&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;1000&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Diapet&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;1000&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Sanmol&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;1000&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Puyer 16&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;1000&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Puyer 19&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;1000&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Antimo&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;1000&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Tolak Angin&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;3500&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Tolak Angin Anak&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;2500&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Tolak Linu&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;3500&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Komik&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;2000&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Madu Rasa&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;1500&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Minyak Kayu Putih Small&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;7000&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Kapas&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;5500&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Tisu&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;3000&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Talek&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;8500&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Masker&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;1500&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Ultra Flu&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;1000&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Koyo Cabe&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;1500&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Koyo Handsaplash&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;2000&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Koyo Salonpas&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;1000&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//</span>
+<span class="s2">//                    //PAMPERS</span>
+<span class="s2">//                    case &quot;Pampers XXL&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;3500&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Pampers XL&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;3000&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Pampers L&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;2500&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Pampers M&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;2500&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Charm Night&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;3000&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                    case &quot;Charm Biasa&quot;:</span>
+<span class="s2">//                        edtharga.setText(String.valueOf(&quot;500&quot;));</span>
+<span class="s2">//                        break;</span>
+<span class="s2">//                }</span>
+<span class="s2">//            }</span>
+<span class="s2">//        }</span>
+<span class="s2">//</span>
+<span class="s2">//        @Override</span>
+<span class="s2">//        public void onNothingSelected(AdapterView&lt;?&gt; arg) {</span>
+<span class="s2">//</span>
+<span class="s2">//        }</span>
+<span class="s2">//    }</span>
+
+    <span class="s0">private </span><span class="s1">String formatRupiah(Integer number){</span>
+        <span class="s1">Locale localeID = </span><span class="s0">new </span><span class="s1">Locale(</span><span class="s3">&quot;in&quot;</span><span class="s0">, </span><span class="s3">&quot;ID&quot;</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">NumberFormat formatRupiah = NumberFormat.getCurrencyInstance(localeID)</span><span class="s0">;</span>
+        <span class="s0">return </span><span class="s1">formatRupiah.format(number)</span><span class="s0">;</span>
+    <span class="s1">}</span>
+
+
+    <span class="s0">public class </span><span class="s1">ItemSabun </span><span class="s0">implements </span><span class="s1">AdapterView.OnItemSelectedListener {</span>
+        <span class="s2">//get strings of first item</span>
+        <span class="s1">String firstItem = String.valueOf(edtsabun.getSelectedItem())</span><span class="s0">;</span>
+
+        <span class="s0">public void </span><span class="s1">onItemSelected(AdapterView&lt;?&gt; parent</span><span class="s0">, </span><span class="s1">View view</span><span class="s0">, int </span><span class="s1">pos</span><span class="s0">, long </span><span class="s1">id) {</span>
+            <span class="s0">if </span><span class="s1">(firstItem.equals(String.valueOf(edtsabun.getSelectedItem()))) {</span>
+            <span class="s1">} </span><span class="s0">else </span><span class="s1">{</span>
+
+                <span class="s1">menu_barang = (String) edtsabun.getSelectedItem()</span><span class="s0">;</span>
+                <span class="s0">switch</span><span class="s1">(menu_barang){</span>
+                    <span class="s2">// SABUN</span>
+                    <span class="s0">case </span><span class="s3">&quot;Lifeboy&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;4000&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Nuvo Small&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;3000&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Nuvo Medium&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;4500&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;ZEN&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;4000&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Shinzui&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;5000&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;GIV&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;3000&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Detol&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;4000&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Odol&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;5000&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Rexona Women&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;2500&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Rexona Men&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;2500&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Garnier Renceng&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;4000&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Fair &amp; Lovely&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;4500&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Kapur Barus&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;2000&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Sikat Gigi&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;3500&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                <span class="s1">}</span>
+            <span class="s1">}</span>
+        <span class="s1">}</span>
+
+        <span class="s1">@Override</span>
+        <span class="s0">public void </span><span class="s1">onNothingSelected(AdapterView&lt;?&gt; arg) {</span>
+
+        <span class="s1">}</span>
+    <span class="s1">}</span>
+
+    <span class="s0">public class </span><span class="s1">ItemShampo </span><span class="s0">implements </span><span class="s1">AdapterView.OnItemSelectedListener {</span>
+        <span class="s2">//get strings of first item</span>
+        <span class="s1">String firstItem = String.valueOf(edtshampo.getSelectedItem())</span><span class="s0">;</span>
+
+        <span class="s0">public void </span><span class="s1">onItemSelected(AdapterView&lt;?&gt; parent</span><span class="s0">, </span><span class="s1">View view</span><span class="s0">, int </span><span class="s1">pos</span><span class="s0">, long </span><span class="s1">id) {</span>
+            <span class="s0">if </span><span class="s1">(firstItem.equals(String.valueOf(edtshampo.getSelectedItem()))) {</span>
+            <span class="s1">} </span><span class="s0">else </span><span class="s1">{</span>
+
+                <span class="s1">menu_barang = (String) edtshampo.getSelectedItem()</span><span class="s0">;</span>
+                <span class="s0">switch</span><span class="s1">(menu_barang){</span>
+                    <span class="s2">//SHAMPO</span>
+                    <span class="s0">case </span><span class="s3">&quot;Pantine Kondisioner&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;500&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Sunslik Kondisioner&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;500&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Zinc aneka macam&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;500&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Lifeboy aneka macam&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;500&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Head &amp; Shoulder&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;1000&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Pantine aneka macam&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;1000&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Dove aneka macam&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;1000&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Cleare aneka macam&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;1000&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;KIT&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;2000&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                <span class="s1">}</span>
+            <span class="s1">}</span>
+        <span class="s1">}</span>
+
+        <span class="s1">@Override</span>
+        <span class="s0">public void </span><span class="s1">onNothingSelected(AdapterView&lt;?&gt; arg) {</span>
+
+        <span class="s1">}</span>
+    <span class="s1">}</span>
+
+
+    <span class="s0">public class </span><span class="s1">ItemcuciPiring </span><span class="s0">implements </span><span class="s1">AdapterView.OnItemSelectedListener {</span>
+        <span class="s2">//get strings of first item</span>
+        <span class="s1">String firstItem = String.valueOf(edtcuciPiring.getSelectedItem())</span><span class="s0">;</span>
+
+        <span class="s0">public void </span><span class="s1">onItemSelected(AdapterView&lt;?&gt; parent</span><span class="s0">, </span><span class="s1">View view</span><span class="s0">, int </span><span class="s1">pos</span><span class="s0">, long </span><span class="s1">id) {</span>
+            <span class="s0">if </span><span class="s1">(firstItem.equals(String.valueOf(edtcuciPiring.getSelectedItem()))) {</span>
+            <span class="s1">} </span><span class="s0">else </span><span class="s1">{</span>
+
+                <span class="s1">menu_barang = (String) edtcuciPiring.getSelectedItem()</span><span class="s0">;</span>
+                <span class="s0">switch</span><span class="s1">(menu_barang){</span>
+                    <span class="s2">//SABUN CUCI PIRING</span>
+                    <span class="s0">case </span><span class="s3">&quot;Sunlight Small&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;500&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Sunlight Medium&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;2000&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Mama Lemon Small&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;500&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Mama Lemon Medium&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;2000&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Ekonomi Small&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;500&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Ekonomi Medium&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;2000&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Ekonomi Big&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;5000&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                <span class="s1">}</span>
+            <span class="s1">}</span>
+        <span class="s1">}</span>
+
+        <span class="s1">@Override</span>
+        <span class="s0">public void </span><span class="s1">onNothingSelected(AdapterView&lt;?&gt; arg) {</span>
+
+        <span class="s1">}</span>
+    <span class="s1">}</span>
+
+    <span class="s0">public class </span><span class="s1">ItemSabunCuci </span><span class="s0">implements </span><span class="s1">AdapterView.OnItemSelectedListener {</span>
+        <span class="s2">//get strings of first item</span>
+        <span class="s1">String firstItem = String.valueOf(edtsabunCuci.getSelectedItem())</span><span class="s0">;</span>
+
+        <span class="s0">public void </span><span class="s1">onItemSelected(AdapterView&lt;?&gt; parent</span><span class="s0">, </span><span class="s1">View view</span><span class="s0">, int </span><span class="s1">pos</span><span class="s0">, long </span><span class="s1">id) {</span>
+            <span class="s0">if </span><span class="s1">(firstItem.equals(String.valueOf(edtsabunCuci.getSelectedItem()))) {</span>
+            <span class="s1">} </span><span class="s0">else </span><span class="s1">{</span>
+
+                <span class="s1">menu_barang = (String) edtsabunCuci.getSelectedItem()</span><span class="s0">;</span>
+                <span class="s0">switch</span><span class="s1">(menu_barang){</span>
+                    <span class="s2">//SABUN CUCI</span>
+                    <span class="s0">case </span><span class="s3">&quot;Rinso Bubuk&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;1000&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Rinso Cair&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;1000&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Soklin Liquid&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;500&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Soklin Bubuk Small&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;500&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Soklin Bubuk Medium&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;1000&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Soklin Antiseptik&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;1000&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Daia&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;1000&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Jazz1&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;1000&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Molto&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;500&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Downie&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;500&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Wipol&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;1000&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Soklin Lantai&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;500&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Rapika&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;500&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Kispray Gold&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;1000&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Kispray Biasa&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;500&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+
+                <span class="s1">}</span>
+            <span class="s1">}</span>
+        <span class="s1">}</span>
+
+        <span class="s1">@Override</span>
+        <span class="s0">public void </span><span class="s1">onNothingSelected(AdapterView&lt;?&gt; arg) {</span>
+
+        <span class="s1">}</span>
+    <span class="s1">}</span>
+
+    <span class="s0">public class </span><span class="s1">ItemBumbu </span><span class="s0">implements </span><span class="s1">AdapterView.OnItemSelectedListener {</span>
+        <span class="s2">//get strings of first item</span>
+        <span class="s1">String firstItem = String.valueOf(edtbumbu.getSelectedItem())</span><span class="s0">;</span>
+
+        <span class="s0">public void </span><span class="s1">onItemSelected(AdapterView&lt;?&gt; parent</span><span class="s0">, </span><span class="s1">View view</span><span class="s0">, int </span><span class="s1">pos</span><span class="s0">, long </span><span class="s1">id) {</span>
+            <span class="s0">if </span><span class="s1">(firstItem.equals(String.valueOf(edtbumbu.getSelectedItem()))) {</span>
+            <span class="s1">} </span><span class="s0">else </span><span class="s1">{</span>
+
+                <span class="s1">menu_barang = (String) edtbumbu.getSelectedItem()</span><span class="s0">;</span>
+                <span class="s0">switch</span><span class="s1">(menu_barang){</span>
+                    <span class="s2">// BUMBU</span>
+                    <span class="s0">case </span><span class="s3">&quot;Racik Nasi Goreng Ekstra Pedas&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;2000&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Racik Nasi Goreng Biasa&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;2000&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Racik Tempe&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;2000&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Racik Ayam&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;2000&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Racik Ikan&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;2000&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Racik Sayur Asem&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;2000&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Racik Sayur Sop&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;2000&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Racik Sayur Lodeh&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;2000&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Racik Kangkung&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;2000&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Sajiku Tepung&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;2500&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Saori Saus Tiram&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;3000&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Desaku Sambel Goreng&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;2500&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Desaku Balado&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;2500&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Desaku Kari&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;2500&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Desaku Ketumbar Bubuk&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;500&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Dapur Kita Ketumbar Bubuk&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;1000&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Dapur Kita Balado&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;1000&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Dapur Kita Jinten Bubuk&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;1000&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Dapur Kita Bawang Putih Bubuk&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;500&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Dapur Kita Kayu Manis Bubuk&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;500&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Dapur Kita Kencur Bubuk&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;500&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Dapur Kita Kunyit&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;500&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Berlian Pala Bubuk&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;500&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Daisy Lada Bubuk&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;500&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Ladaku Merica Bubuk&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;1000&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Uleg Sambel Terasi&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;1500&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Bon Cabe&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;500&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Aida&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;2500&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Mama Suka Kuah Bakso&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;500&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Terasi ABC&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;500&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                <span class="s1">}</span>
+            <span class="s1">}</span>
+        <span class="s1">}</span>
+
+        <span class="s1">@Override</span>
+        <span class="s0">public void </span><span class="s1">onNothingSelected(AdapterView&lt;?&gt; arg) {</span>
+
+        <span class="s1">}</span>
+    <span class="s1">}</span>
+
+    <span class="s0">public class </span><span class="s1">ItemBumbuGlondong </span><span class="s0">implements </span><span class="s1">AdapterView.OnItemSelectedListener {</span>
+        <span class="s2">//get strings of first item</span>
+        <span class="s1">String firstItem = String.valueOf(edtbumbuGlondong.getSelectedItem())</span><span class="s0">;</span>
+
+        <span class="s0">public void </span><span class="s1">onItemSelected(AdapterView&lt;?&gt; parent</span><span class="s0">, </span><span class="s1">View view</span><span class="s0">, int </span><span class="s1">pos</span><span class="s0">, long </span><span class="s1">id) {</span>
+            <span class="s0">if </span><span class="s1">(firstItem.equals(String.valueOf(edtbumbuGlondong.getSelectedItem()))) {</span>
+            <span class="s1">} </span><span class="s0">else </span><span class="s1">{</span>
+
+                <span class="s1">menu_barang = (String) edtbumbuGlondong.getSelectedItem()</span><span class="s0">;</span>
+                <span class="s0">switch</span><span class="s1">(menu_barang){</span>
+                    <span class="s2">//BUMBU GLONDING</span>
+                    <span class="s0">case </span><span class="s3">&quot;Gula Jawa Renceng&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;500&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Asem Renceng&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;500&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Bawang Putih Renceng&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;500&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Kemiri Renceng&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;500&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Merica Renceng&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;500&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                <span class="s1">}</span>
+            <span class="s1">}</span>
+        <span class="s1">}</span>
+
+        <span class="s1">@Override</span>
+        <span class="s0">public void </span><span class="s1">onNothingSelected(AdapterView&lt;?&gt; arg) {</span>
+
+        <span class="s1">}</span>
+    <span class="s1">}</span>
+
+    <span class="s0">public class </span><span class="s1">ItemCaos </span><span class="s0">implements </span><span class="s1">AdapterView.OnItemSelectedListener {</span>
+        <span class="s2">//get strings of first item</span>
+        <span class="s1">String firstItem = String.valueOf(edtcaos.getSelectedItem())</span><span class="s0">;</span>
+
+        <span class="s0">public void </span><span class="s1">onItemSelected(AdapterView&lt;?&gt; parent</span><span class="s0">, </span><span class="s1">View view</span><span class="s0">, int </span><span class="s1">pos</span><span class="s0">, long </span><span class="s1">id) {</span>
+            <span class="s0">if </span><span class="s1">(firstItem.equals(String.valueOf(edtcaos.getSelectedItem()))) {</span>
+            <span class="s1">} </span><span class="s0">else </span><span class="s1">{</span>
+
+                <span class="s1">menu_barang = (String) edtcaos.getSelectedItem()</span><span class="s0">;</span>
+                <span class="s0">switch</span><span class="s1">(menu_barang){</span>
+                    <span class="s2">//CAOS</span>
+                    <span class="s0">case </span><span class="s3">&quot;ABC Kecil&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;500&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;ABC Medium&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;1000&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;ABC Besar&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;3000&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Indofood Small&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;1000&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                <span class="s1">}</span>
+            <span class="s1">}</span>
+        <span class="s1">}</span>
+
+        <span class="s1">@Override</span>
+        <span class="s0">public void </span><span class="s1">onNothingSelected(AdapterView&lt;?&gt; arg) {</span>
+
+        <span class="s1">}</span>
+    <span class="s1">}</span>
+
+    <span class="s0">public class </span><span class="s1">ItemKecap </span><span class="s0">implements </span><span class="s1">AdapterView.OnItemSelectedListener {</span>
+        <span class="s2">//get strings of first item</span>
+        <span class="s1">String firstItem = String.valueOf(edtkecap.getSelectedItem())</span><span class="s0">;</span>
+
+        <span class="s0">public void </span><span class="s1">onItemSelected(AdapterView&lt;?&gt; parent</span><span class="s0">, </span><span class="s1">View view</span><span class="s0">, int </span><span class="s1">pos</span><span class="s0">, long </span><span class="s1">id) {</span>
+            <span class="s0">if </span><span class="s1">(firstItem.equals(String.valueOf(edtkecap.getSelectedItem()))) {</span>
+            <span class="s1">} </span><span class="s0">else </span><span class="s1">{</span>
+
+                <span class="s1">menu_barang = (String) edtkecap.getSelectedItem()</span><span class="s0">;</span>
+                <span class="s0">switch</span><span class="s1">(menu_barang){</span>
+                    <span class="s2">//KECAP</span>
+                    <span class="s0">case </span><span class="s3">&quot;Bango Medium&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;1000&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Bango Big&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;3000&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Sedap Small&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;500&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Sedap Big&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;2000&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;ABC Small&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;500&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;ABC Big&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;2000&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                <span class="s1">}</span>
+            <span class="s1">}</span>
+        <span class="s1">}</span>
+
+        <span class="s1">@Override</span>
+        <span class="s0">public void </span><span class="s1">onNothingSelected(AdapterView&lt;?&gt; arg) {</span>
+
+        <span class="s1">}</span>
+    <span class="s1">}</span>
+
+    <span class="s0">public class </span><span class="s1">ItemMie </span><span class="s0">implements </span><span class="s1">AdapterView.OnItemSelectedListener {</span>
+        <span class="s2">//get strings of first item</span>
+        <span class="s1">String firstItem = String.valueOf(edtmie.getSelectedItem())</span><span class="s0">;</span>
+
+        <span class="s0">public void </span><span class="s1">onItemSelected(AdapterView&lt;?&gt; parent</span><span class="s0">, </span><span class="s1">View view</span><span class="s0">, int </span><span class="s1">pos</span><span class="s0">, long </span><span class="s1">id) {</span>
+            <span class="s0">if </span><span class="s1">(firstItem.equals(String.valueOf(edtmie.getSelectedItem()))) {</span>
+            <span class="s1">} </span><span class="s0">else </span><span class="s1">{</span>
+
+                <span class="s1">menu_barang = (String) edtmie.getSelectedItem()</span><span class="s0">;</span>
+                <span class="s0">switch</span><span class="s1">(menu_barang){</span>
+                    <span class="s2">//MIE INSTAN</span>
+                    <span class="s0">case </span><span class="s3">&quot;Sedap Goreng&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;3500&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Sedap Ayam Limau&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;3500&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Sedap Korea&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;3500&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Sedap Kari&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;3000&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Sedap Ayam Bawang&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;3000&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Sedap Soto&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;3000&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Sedap Bakso&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;3000&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Sedap Singapure&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;3000&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Indomie Goreng&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;3500&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Indomie Rendang&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;3500&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Indomie Ayam Geprek&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;3500&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Indomie Aceh&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;3500&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Indomie Ayam Bawang Spesial&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;3000&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Indomie Soto Banjar&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;3000&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Indomie Seblak Jeletot&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;3000&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Supermie Ayam Bawang&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;3000&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Sarimi Ayam Bawang&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;3000&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Sukses Ayam Kecap&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;4000&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Sukses Ayam Kremes&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;4000&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Sukses Ayam Bawang&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;4000&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Sukses Soto&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;4000&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Sukses Kari&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;4000&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                <span class="s1">}</span>
+            <span class="s1">}</span>
+        <span class="s1">}</span>
+
+        <span class="s1">@Override</span>
+        <span class="s0">public void </span><span class="s1">onNothingSelected(AdapterView&lt;?&gt; arg) {</span>
+
+        <span class="s1">}</span>
+    <span class="s1">}</span>
+
+    <span class="s0">public class </span><span class="s1">ItemMinuman </span><span class="s0">implements </span><span class="s1">AdapterView.OnItemSelectedListener {</span>
+        <span class="s2">//get strings of first item</span>
+        <span class="s1">String firstItem = String.valueOf(edtminuman.getSelectedItem())</span><span class="s0">;</span>
+
+        <span class="s0">public void </span><span class="s1">onItemSelected(AdapterView&lt;?&gt; parent</span><span class="s0">, </span><span class="s1">View view</span><span class="s0">, int </span><span class="s1">pos</span><span class="s0">, long </span><span class="s1">id) {</span>
+            <span class="s0">if </span><span class="s1">(firstItem.equals(String.valueOf(edtminuman.getSelectedItem()))) {</span>
+            <span class="s1">} </span><span class="s0">else </span><span class="s1">{</span>
+
+                <span class="s1">menu_barang = (String) edtminuman.getSelectedItem()</span><span class="s0">;</span>
+                <span class="s0">switch</span><span class="s1">(menu_barang){</span>
+                    <span class="s2">//MINUMAN</span>
+                    <span class="s0">case </span><span class="s3">&quot;Lemineral 600ml&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;3000&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Lemineral 330ml&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;2000&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Susu Milku&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;3000&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Susu Kotak&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;3000&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Larutan Botol&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;4000&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Larutan Kaleng&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;7000&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Ager-ager Walet&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;1500&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Nutrijel&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;4000&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                <span class="s1">}</span>
+            <span class="s1">}</span>
+        <span class="s1">}</span>
+
+        <span class="s1">@Override</span>
+        <span class="s0">public void </span><span class="s1">onNothingSelected(AdapterView&lt;?&gt; arg) {</span>
+
+        <span class="s1">}</span>
+    <span class="s1">}</span>
+
+    <span class="s0">public class </span><span class="s1">ItemSembako </span><span class="s0">implements </span><span class="s1">AdapterView.OnItemSelectedListener {</span>
+        <span class="s2">//get strings of first item</span>
+        <span class="s1">String firstItem = String.valueOf(edtsembako.getSelectedItem())</span><span class="s0">;</span>
+
+        <span class="s0">public void </span><span class="s1">onItemSelected(AdapterView&lt;?&gt; parent</span><span class="s0">, </span><span class="s1">View view</span><span class="s0">, int </span><span class="s1">pos</span><span class="s0">, long </span><span class="s1">id) {</span>
+            <span class="s0">if </span><span class="s1">(firstItem.equals(String.valueOf(edtsembako.getSelectedItem()))) {</span>
+            <span class="s1">} </span><span class="s0">else </span><span class="s1">{</span>
+
+                <span class="s1">menu_barang = (String) edtsembako.getSelectedItem()</span><span class="s0">;</span>
+                <span class="s0">switch</span><span class="s1">(menu_barang){</span>
+                    <span class="s2">//SEMBAKO</span>
+                    <span class="s0">case </span><span class="s3">&quot;Beras 1 Kg&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;11000&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Beras 1/2 Kg&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;5500&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Beras 3/4 Kg&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;85000&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Gula 1 Kg&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;15000&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Gula 1/2 Kg&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;7500&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Gula 1/4 Kg&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;4000&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Gula Renceng&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;1500&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Tepung Beras (Glepongan) 1 Kg&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;12000&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Tepung Beras (Glepongan) 1/2 Kg&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;6000&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Tepung Beras (Glepongan) 1/4 Kg&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;3000&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Tepung Beras (Glepongan) 1 Ons&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;1500&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Tepung Aci 1 Kg&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;12000&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Tepung Aci 1/2 Kg&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;6000&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Tepung Aci 1/4 Kg&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;3000&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Tepung Aci 1 Ons&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;1500&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Tepung Padi&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;3000&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Tepung Trigu 1 Kg&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;12000&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Tepung Trigu 1/2 Kg&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;6000&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Tepung Trigu 1/4 Kg&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;3000&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Tepung Trigu 1 Ons&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;1500&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Telor 1 Butir&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;2000&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Telor 1 Kg&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;30000&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Telor 1/2 Kg&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;15000&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Telor 1/4 Kg&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;7500&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Minyak Goreng Renceng&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;1500&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Minyak Goreng 1 Kg&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;14000&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Minyak Goreng 1/2 Kg&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;7000&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Minyak Goreng 1/4 Kg&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;4500&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Sari Kecut&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;3000&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Garam Daun&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;2000&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Teh Biru&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;2000&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Teh Kuning 1&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;1000&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Teh Kuning 3&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;2000&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Teh Celup Kotak&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;10000&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Teh Celup Renceng&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;2000&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                <span class="s1">}</span>
+            <span class="s1">}</span>
+        <span class="s1">}</span>
+
+        <span class="s1">@Override</span>
+        <span class="s0">public void </span><span class="s1">onNothingSelected(AdapterView&lt;?&gt; arg) {</span>
+
+        <span class="s1">}</span>
+    <span class="s1">}</span>
+
+    <span class="s0">public class </span><span class="s1">ItemRokok </span><span class="s0">implements </span><span class="s1">AdapterView.OnItemSelectedListener {</span>
+        <span class="s2">//get strings of first item</span>
+        <span class="s1">String firstItem = String.valueOf(edtrokok.getSelectedItem())</span><span class="s0">;</span>
+
+        <span class="s0">public void </span><span class="s1">onItemSelected(AdapterView&lt;?&gt; parent</span><span class="s0">, </span><span class="s1">View view</span><span class="s0">, int </span><span class="s1">pos</span><span class="s0">, long </span><span class="s1">id) {</span>
+            <span class="s0">if </span><span class="s1">(firstItem.equals(String.valueOf(edtrokok.getSelectedItem()))) {</span>
+            <span class="s1">} </span><span class="s0">else </span><span class="s1">{</span>
+
+                <span class="s1">menu_barang = (String) edtrokok.getSelectedItem()</span><span class="s0">;</span>
+                <span class="s0">switch</span><span class="s1">(menu_barang){</span>
+                    <span class="s2">//ROKOK</span>
+                    <span class="s0">case </span><span class="s3">&quot;Sampoerna Mild&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;28000&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Surya 16&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;29000&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Surya 12&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;23000&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Surya Isi 6 Batang&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;12000&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Surya Isi 8&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;15000&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Filter&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;23000&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;FIlter 1/2&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;12000&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Signature&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;21000&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Signature 1/2&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;11000&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Pro Mild Merah&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;25000&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Gudang Garam Merah&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;15000&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Dji Sam Soe&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;21000&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Rokok 1 Batang&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;2000&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                <span class="s1">}</span>
+            <span class="s1">}</span>
+        <span class="s1">}</span>
+
+        <span class="s1">@Override</span>
+        <span class="s0">public void </span><span class="s1">onNothingSelected(AdapterView&lt;?&gt; arg) {</span>
+
+        <span class="s1">}</span>
+    <span class="s1">}</span>
+
+    <span class="s0">public class </span><span class="s1">ItemPampers </span><span class="s0">implements </span><span class="s1">AdapterView.OnItemSelectedListener {</span>
+        <span class="s2">//get strings of first item</span>
+        <span class="s1">String firstItem = String.valueOf(edtpampers.getSelectedItem())</span><span class="s0">;</span>
+
+        <span class="s0">public void </span><span class="s1">onItemSelected(AdapterView&lt;?&gt; parent</span><span class="s0">, </span><span class="s1">View view</span><span class="s0">, int </span><span class="s1">pos</span><span class="s0">, long </span><span class="s1">id) {</span>
+            <span class="s0">if </span><span class="s1">(firstItem.equals(String.valueOf(edtpampers.getSelectedItem()))) {</span>
+            <span class="s1">} </span><span class="s0">else </span><span class="s1">{</span>
+
+                <span class="s1">menu_barang = (String) edtpampers.getSelectedItem()</span><span class="s0">;</span>
+                <span class="s0">switch</span><span class="s1">(menu_barang){</span>
+                    <span class="s2">//PAMPERS</span>
+                    <span class="s0">case </span><span class="s3">&quot;Pampers XXL&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;3500&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Pampers XL&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;3000&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Pampers L&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;2500&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Pampers M&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;2500&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Charm Night&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;3000&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Charm Biasa&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;500&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                <span class="s1">}</span>
+            <span class="s1">}</span>
+        <span class="s1">}</span>
+
+        <span class="s1">@Override</span>
+        <span class="s0">public void </span><span class="s1">onNothingSelected(AdapterView&lt;?&gt; arg) {</span>
+
+        <span class="s1">}</span>
+    <span class="s1">}</span>
+
+    <span class="s0">public class </span><span class="s1">ItemObat </span><span class="s0">implements </span><span class="s1">AdapterView.OnItemSelectedListener {</span>
+        <span class="s2">//get strings of first item</span>
+        <span class="s1">String firstItem = String.valueOf(edtobat.getSelectedItem())</span><span class="s0">;</span>
+
+        <span class="s0">public void </span><span class="s1">onItemSelected(AdapterView&lt;?&gt; parent</span><span class="s0">, </span><span class="s1">View view</span><span class="s0">, int </span><span class="s1">pos</span><span class="s0">, long </span><span class="s1">id) {</span>
+            <span class="s0">if </span><span class="s1">(firstItem.equals(String.valueOf(edtobat.getSelectedItem()))) {</span>
+            <span class="s1">} </span><span class="s0">else </span><span class="s1">{</span>
+
+                <span class="s1">menu_barang = (String) edtobat.getSelectedItem()</span><span class="s0">;</span>
+                <span class="s0">switch</span><span class="s1">(menu_barang){</span>
+                    <span class="s2">//OBAT</span>
+                    <span class="s0">case </span><span class="s3">&quot;Bodrex Biasa 1 Biji&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;1000&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Bodrex Biasa 2 Biji&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;1500&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Bodrex Biasa 3 Biji&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;2000&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Bodrexin&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;500&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Bodrex PE&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;1000&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Bodrex Migran&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;1000&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Bodrex Extra&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;1000&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Panadol&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;1500&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Oskadon Sakit Kepala&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;1000&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Oskadon SP&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;1000&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Paramex Biasa&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;1000&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Mixagrip Flu &amp; Batuk&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;1000&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Konidin&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;1000&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Naspro&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;1000&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Pilkita&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;2000&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Supertetra&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;2000&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Neo Rheumacyl&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;1000&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Entrostop&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;1000&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Fatigon&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;2000&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Promax&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;1000&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Amoxilin&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;1000&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Pil Dumex&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;1000&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Diapet&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;1000&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Sanmol&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;1000&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Puyer 16&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;1000&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Puyer 19&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;1000&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Antimo&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;1000&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Tolak Angin&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;3500&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Tolak Angin Anak&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;2500&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Tolak Linu&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;3500&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Komik&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;2000&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Madu Rasa&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;1500&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Minyak Kayu Putih Small&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;7000&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Kapas&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;5500&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Tisu&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;3000&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Talek&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;8500&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Masker&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;1500&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Ultra Flu&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;1000&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Koyo Cabe&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;1500&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Koyo Handsaplash&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;2000&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+                    <span class="s0">case </span><span class="s3">&quot;Koyo Salonpas&quot;</span><span class="s1">:</span>
+                        <span class="s1">edtharga.setText(String.valueOf(</span><span class="s3">&quot;1000&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                        <span class="s0">break;</span>
+
+                <span class="s1">}</span>
+            <span class="s1">}</span>
+        <span class="s1">}</span>
+
+        <span class="s1">@Override</span>
+        <span class="s0">public void </span><span class="s1">onNothingSelected(AdapterView&lt;?&gt; arg) {</span>
+
+        <span class="s1">}</span>
+    <span class="s1">}</span>
+<span class="s1">}</span></pre>
+</body>
+</html>

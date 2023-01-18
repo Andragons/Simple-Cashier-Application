@@ -1,0 +1,254 @@
+package com.example.kasir;
+
+import androidx.appcompat.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TableLayout;
+import android.widget.TextView;
+import android.widget.Toast;
+import android.widget.TableRow;
+import android.widget.Spinner;
+import java.util.ArrayList;
+
+
+public class MainActivity extends AppCompatActivity {
+    private EditText edtjumlahbel, edtharga, edtuangbay, edttotalbelanja, edtuangkembali, edtketerangan, edtnamabar;
+    private Button btntambah;
+    private Button btnhapus;
+    private Button btnexit;
+    private Button btnproses;
+//    private Spinner edtnamabar;
+
+    private TextView txtnamabar;
+    private TextView txtjumlahbel;
+    private TextView txtharga;
+    private TextView txtuangbay;
+
+    private TextView txttotalbelanja;
+    private TextView txtuangkembali;
+    private TextView txtketerangan;
+
+    double dataTotal;
+    double totalHarga;
+
+    ArrayList<String> barang = new ArrayList<>();
+    ArrayList<Integer> jumlah = new ArrayList<>();
+    ArrayList<Integer> hrg = new ArrayList<>();
+    ArrayList<Integer> ttl = new ArrayList<>();
+
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        getSupportActionBar().setTitle("Kedai Anza");
+
+
+//        TableLayout tablelayoutid = (TableLayout)findViewById(R.id.tablelayoutid);
+//        TableRow row = (TableRow)getLayoutInflater().inflate(R.layout.layout_row, null);
+
+//        edtnamabar = (Spinner) findViewById(R.id.namabarang);
+        edtnamabar = (EditText) findViewById(R.id.namabarang);
+        edtjumlahbel = (EditText) findViewById(R.id.jumlahbeli);
+        edtharga = (EditText) findViewById(R.id.harga);
+        edtuangbay = (EditText) findViewById(R.id.uangbayar);
+        edttotalbelanja = (EditText) findViewById(R.id.totalbelanja);
+        edtuangkembali = (EditText) findViewById(R.id.uangkembali);
+        edtketerangan = (EditText) findViewById(R.id.keterangan);
+
+        btntambah = (Button) findViewById(R.id.tombolTambah);
+        btnhapus = (Button) findViewById(R.id.tombol2);
+        btnexit = (Button) findViewById(R.id.tombol3);
+        btnproses = (Button) findViewById(R.id.tombolProses);
+
+//        txtnamabar = (TextView) findViewById(R.id.namabarang);
+        txtjumlahbel = (TextView) findViewById(R.id.jumlahbeli);
+        txtharga = (TextView) findViewById(R.id.harga);
+        txtuangbay = (TextView) findViewById(R.id.uangbayar);
+        txttotalbelanja = (TextView) findViewById(R.id.totalbelanja);
+        txtuangkembali = (TextView) findViewById(R.id.uangkembali);
+        txtketerangan = (TextView) findViewById(R.id.keterangan);
+
+        TableLayout tablelayoutid = (TableLayout)findViewById(R.id.tablelayoutid);
+        TableRow row = (TableRow)getLayoutInflater().inflate(R.layout.layout_row, null);
+        
+//        edtnamabar.setOnItemSelectedListener(new ItemSelectedListener());
+
+
+        //memberikan action pada tombol tambah
+
+        btntambah.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                String namabarang = edtnamabar.getText().toString().trim();
+                String jumlahbeli = edtjumlahbel.getText().toString().trim();
+                String harga = edtharga.getText().toString().trim();
+//                String uangbayar = edtuangbay.getText().toString().trim();
+
+                int jb = Integer.parseInt(jumlahbeli);
+                int h = Integer.parseInt(harga);
+//                double ub = Double.parseDouble(uangbayar);
+                int total = (jb * h);
+                int sum;
+                int ttlHarga = 0;
+
+                barang.add(namabarang);
+                jumlah.add(jb);
+                hrg.add(h);
+                ttl.add(total);
+
+//                ArrayList barang = new ArrayList();
+//                barang.add(namabarang);
+//
+//                ArrayList jumlah = new ArrayList();
+//                jumlah.add(jumlahbeli);
+//
+//                ArrayList hrg = new ArrayList();
+//                hrg.add(harga);
+//
+//                ArrayList ttl = new ArrayList();
+//                ttl.add(total);
+
+
+//                String[] barang = new String[1];
+//                Arrays.fill(barang, namabarang);
+//
+//                double[] jumlah = new double[1];
+//                Arrays.fill(jumlah, Double.parseDouble(jumlahbeli));
+//
+//                double[] hrg = new double[1];
+//                Arrays.fill(hrg, Double.parseDouble(harga));
+//
+//                double[] ttl = new double[1];
+//                Arrays.fill(ttl, Double.parseDouble(String.valueOf(total)));
+//                String[] barang1 = {"buku", "rokok", "gula"};
+//                double[] jumlah1 = {1.0, 2.0, 3.0};
+//                double[] hrg1 = {100.0, 200.0, 300.0};
+//                double[] ttl1 = {1200.0, 1500.0, 1200.0};
+
+                
+                for(int i = 0; i < jumlah.size(); i++) {
+                    ((TextView)row.findViewById(R.id.idnama)).setText((CharSequence) barang.get(i));
+                    ((TextView)row.findViewById(R.id.idnilai_a)).setText(String.valueOf(jumlah.get(i)));
+                    ((TextView)row.findViewById(R.id.idnilai_b)).setText(String.valueOf(hrg.get(i)));
+                    ((TextView)row.findViewById(R.id.idnilai_total)).setText(String.valueOf(ttl.get(i)));
+                }
+                tablelayoutid.addView(row);
+
+                for(int x = 0; x < ttl.size(); x++) {
+                    ttlHarga = ttlHarga + ttl.get(x);
+                }
+                String fin = String.valueOf(ttlHarga);
+                edttotalbelanja.setText(fin);
+
+//                edtnamabar.setText(" ");
+                edtharga.setText(" ");
+                edtuangbay.setText(" ");
+                edtjumlahbel.setText(" ");
+
+
+//                    int jumlah_total = tablelayoutid.getChildCount();
+//                    double totalHarga = 0;
+//                    double dataTotal;
+//
+//                    for (int i =0; i < jumlah_total; i++) {
+//                        dataTotal = Double.valueOf(tablelayoutid.getChildAt(4).toString());
+//                        totalHarga += dataTotal;
+//                        txttotalbelanja.setText(String.valueOf("Rp"+totalHarga));
+//                    }
+
+
+//                double uangkembalian = (ub - total);
+//
+//                if (ub < total){
+//                    txtketerangan.setText("Keterangan : uang bayar kurang Rp " + (-uangkembalian));
+//                    txtuangkembali.setText("Uang Kembali : Rp 0" );
+//                }else{
+//                    txtketerangan.setText("Keterangan : Tunggu Kembalian");
+//                    txtuangkembali.setText("Uang Kembali : " + uangkembalian);
+//                }
+
+            }
+        });
+
+        btnhapus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                txtnamabar.setText(" ");
+                txttotalbelanja.setText(" ");
+                txtharga.setText(" ");
+                txtuangbay.setText(" ");
+                txtuangkembali.setText(" ");
+
+                txtjumlahbel.setText(" ");
+                txtketerangan.setText(" ");
+
+                Toast.makeText(getApplicationContext(),"Data sudah direset", Toast.LENGTH_LONG).show();
+
+                // memberikan action pada tombol keluar
+            }
+        });
+
+        btnexit.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+
+                moveTaskToBack(true);
+            }
+        });
+
+        btnproses.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                String uangbayar = edtuangbay.getText().toString().trim();
+                String tl_harga = txttotalbelanja.getText().toString().trim();
+
+                int ub = Integer.parseInt(uangbayar);
+                int tl = Integer.parseInt(tl_harga);
+
+                int uangkembalian = (ub - tl);
+
+
+                if (ub < tl){
+                    txtketerangan.setText("Uang bayar kurang Rp " + (-uangkembalian));
+                    txtuangkembali.setText("0" );
+                }else{
+                    edtketerangan.setText("Tunggu Kembalian");
+                    edtuangkembali.setText(String.valueOf(uangkembalian));
+                }
+
+                edtnamabar.setSelected(false);
+                edtharga.setText(" ");
+                edtuangbay.setText(" ");
+                edtjumlahbel.setText(" ");
+
+            }
+        });
+
+        }
+
+//    public class ItemSelectedListener implements AdapterView.OnItemSelectedListener {
+//        //get strings of first item
+//        String firstItem = String.valueOf(edtnamabar.getSelectedItem());
+//
+//        public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
+//            if (firstItem.equals(String.valueOf(edtnamabar.getSelectedItem()))) {
+//            } else {
+////                Toast.makeText(parent.getContext(),
+////                        "Anda telah memilih : " + parent.getItemAtPosition(pos).toString(),
+////                        Toast.LENGTH_LONG).show();
+//                
+//            }
+//        }
+//
+//        @Override
+//        public void onNothingSelected(AdapterView<?> arg) {
+//        }
+//    }
+}

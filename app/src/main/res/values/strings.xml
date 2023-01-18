@@ -1,0 +1,506 @@
+<resources>
+    <string name="app_name">Kasir</string>
+    <string name="action_settings">Settings</string>
+
+        <string-array
+        name="android_dropdown_arrays">
+        <item> Menu Pilihan </item>
+
+        <item> ---SABUN--- </item>
+        <item> Lifeboy </item>
+        <item> Nuvo Small </item>
+        <item> Nuvo Medium </item>
+        <item> ZEN </item>
+        <item> Shinzui </item>
+        <item> GIV </item>
+        <item> Detol </item>
+        <item> Odol </item>
+        <item> Rexona Women </item>
+        <item> Rexona Men </item>
+        <item> Garnier Renceng </item>
+        <item> Fair and Lovely </item>
+        <item> Kapur Barus </item>
+
+        <item> ---SHAMPO--- </item>
+        <item> Pantine Kondisioner </item>
+        <item> Sunslik Kondisioner </item>
+        <item> Zinc aneka macam </item>
+        <item> Lifeboy aneka macam </item>
+        <item> Head and Shoulder </item>
+        <item> Pantine aneka macam </item>
+        <item> Dove aneka macam </item>
+        <item> Cleare aneka macam </item>
+        <item> KIT </item>
+
+        <item> ---SABUN CUCI PIRING--- </item>
+        <item> Sunlight Small </item>
+        <item> Sunlight Medium </item>
+        <item> Mama Lemon Small </item>
+        <item> Mama Lemon Medium </item>
+        <item> Ekonomi Small </item>
+        <item> Ekonomi Medium </item>
+        <item> Ekonomi Big </item>
+
+        <item> ---SABUN CUCI--- </item>
+        <item> Rinso Bubuk </item>
+        <item> Rinso Cair </item>
+        <item> Soklin Liquid </item>
+        <item> Soklin Bubuk Small </item>
+        <item> Soklin Bubuk Medium </item>
+        <item> Soklin Antiseptik </item>
+        <item> Daia </item>
+        <item> Jazz 1 </item>
+        <item> Molto </item>
+        <item> Downie </item>
+        <item> Wipol </item>
+        <item> Soklin Lantai </item>
+        <item> Rapika </item>
+        <item> Kispray Gold </item>
+        <item> Kispray Biasa </item>
+
+        <item> ---BUMBU--- </item>
+        <item> Racik Nasi Goreng Ekstra Pedas </item>
+        <item> Racik Nasi Goreng Biasa </item>
+        <item> Racik Tempe </item>
+        <item> Racik Ayam </item>
+        <item> Racik Ikan </item>
+        <item> Racik Sayur Asem </item>
+        <item> Racik Sayur Sop </item>
+        <item> Racik Sayur Lodeh </item>
+        <item> Racik Kangkung </item>
+        <item> Sajiku Tepung </item>
+        <item> Saori Saus Tiram </item>
+        <item> Desaku Sambel Goreng </item>
+        <item> Desaku Balado </item>
+        <item> Desaku Kari </item>
+        <item> Desaku Ketumbar Bubuk </item>
+        <item> Dapur Kita Ketumbar Bubuk </item>
+        <item> Dapur Kita Balado </item>
+        <item> Dapur Kita Jinten Bubuk </item>
+        <item> Dapur Kita Bawang Putih Bubuk </item>
+        <item> Dapur Kita Kayu Manis Bubuk </item>
+        <item> Dapur Kita Kencur Bubuk </item>
+        <item> Dapur Kita Kunyit </item>
+        <item> Berlian Pala Bubuk </item>
+        <item> Daisy Lada Bubuk </item>
+        <item> Ladaku Merica Bubuk </item>
+        <item> Uleg Sambel Terasi </item>
+        <item> Bon Cabe </item>
+        <item> Aida </item>
+        <item> Mama Suka Kuah Bakso </item>
+        <item> Terasi ABC </item>
+
+        <item> ---BUMBU GLONDONG--- </item>
+        <item> Gula Jawa Renceng </item>
+        <item> Asem Renceng </item>
+        <item> Bawang Putih Renceng </item>
+        <item> Kemiri Renceng </item>
+        <item> Merica Renceng </item>
+
+        <item> ---CAOS--- </item>
+        <item> ABC Kecil </item>
+        <item> ABC Medium </item>
+        <item> ABC Besar </item>
+        <item> Indofood Small </item>
+
+        <item> ---KECAP--- </item>
+        <item> Bango Medium </item>
+        <item> Bango Big </item>
+        <item> Sedap Small </item>
+        <item> Sedap Big </item>
+        <item> ABC Small </item>
+        <item> ABC Big </item>
+
+        <item> ---MIE INSTAN--- </item>
+        <item> Sedap Goreng </item>
+        <item> Sedap Ayam Limau </item>
+        <item> Sedap Korea </item>
+        <item> Sedap Kari </item>
+        <item> Sedap Ayam Bawang </item>
+        <item> Sedap Soto </item>
+        <item> Sedap Bakso </item>
+        <item> Sedap Singapure </item>
+        <item> Indomie Goreng </item>
+        <item> Indomie Rendang </item>
+        <item> Indomie Ayam Geprek </item>
+        <item> Indomie Aceh  </item>
+        <item> Indomie Ayam Bawang Spesial </item>
+        <item> Indomie Soto Banjar </item>
+        <item> Indomie Seblak Jeletot </item>
+        <item> Supermie Ayam Bawang </item>
+        <item> Sarimi Ayam Bawang </item>
+        <item> Sukses Ayam Kecap </item>
+        <item> Sukses Ayam Kremes </item>
+        <item> Sukses Soto </item>
+        <item> Sukses Kari </item>
+        <item> Sukses Ayam Bawang </item>
+
+        <item> ---MINUMAN--- </item>
+        <item> Lemineral 600ml </item>
+        <item> Lemineral 330ml </item>
+        <item> Susu Milku </item>
+        <item> Susu kotak </item>
+        <item> Larutan Botol </item>
+        <item> Larutan Kaleng </item>
+        <item> Ager-ager Walet </item>
+        <item> Nutrijel </item>
+
+        <item> ---SEMBAKO--- </item>
+        <item> Beras 1 Kg </item>
+        <item> Beras 1/2 Kg </item>
+        <item> Beras 3/4 Kg </item>
+        <item> Gula 1 Kg </item>
+        <item> Gula 1/2 Kg </item>
+        <item> Gula 1/4 Kg </item>
+        <item> Tepung Beras (Glepongan) 1 Kg </item>
+        <item> Tepung Beras (Glepongan) 1/2 Kg </item>
+        <item> Tepung Beras (Glepongan) 1/4 Kg </item>
+        <item> Tepung Beras (Glepongan) 1 Ons </item>
+        <item> Tepung Aci 1 Kg </item>
+        <item> Tepung Aci 1/2 Kg </item>
+        <item> Tepung Aci 1/4 Kg </item>
+        <item> Tepung Aci 1 Ons </item>
+        <item> Tepung Padi </item>
+        <item> Tepung Trigu 1 Kg </item>
+        <item> Tepung Trigu 1/2 Kg </item>
+        <item> Tepung Trigu 1/4 Kg </item>
+        <item> Tepung Trigu 1 Ons </item>
+        <item> Telor 1 Butir </item>
+        <item> Telor 1 Kg </item>
+        <item> Telor 1/2 Kg </item>
+        <item> Telor 1/4 Kg </item>
+        <item> Minyak Goreng Renceng </item>
+        <item> Minyak Goreng 1 Kg </item>
+        <item> Minyak Goreng 1/2 Kg </item>
+        <item> Minyak Goreng 1/4 Kg </item>
+        <item> Sari Kecut </item>
+
+        <item> ---ROKOK--- </item>
+        <item> Sampoerna Mild </item>
+        <item> Surya 16 </item>
+        <item> Surya 12 </item>
+        <item> Surya Isi 6 Batang </item>
+        <item> Surya Isi 8 </item>
+        <item> Filter </item>
+        <item> FIlter 1/2 </item>
+        <item> Signature </item>
+        <item> Signature 1/2 </item>
+        <item> Pro Mild Merah </item>
+        <item> Gudang Garam Merah </item>
+        <item> Dji Sam Soe </item>
+        <item> Rokok 1 Batang </item>
+
+        <item> ---OBAT--- </item>
+        <item> Bodrex Biasa </item>
+        <item> Bodrex Biasa 1 Biji </item>
+        <item> Bodrex Biasa 2 Biji </item>
+        <item> Bodrex Biasa 3 Biji </item>
+        <item> Bodrexin </item>
+        <item> Bodrex PE </item>
+        <item> Bodrex Migran </item>
+        <item> Bodrex Extra </item>
+        <item> Oskadon Sakit Kepala </item>
+        <item> Oskadon SP </item>
+        <item> Paramex Biasa </item>
+        <item> Mixagrip Flu dan Batuk </item>
+        <item> Konidin </item>
+        <item> Naspro </item>
+        <item> Pilkita </item>
+        <item> Supertetra </item>
+        <item> Neo Rheumacyl </item>
+        <item> Entrostop </item>
+        <item> Fatigon </item>
+        <item> Promax </item>
+        <item> Diapet </item>
+        <item> Sanmol </item>
+        <item> Puyer 16 </item>
+        <item> Puyer 19 </item>
+        <item> Antimo </item>
+        <item> Tolak Angin </item>
+        <item> Tolak Angin Anak </item>
+        <item> Tolak Linu </item>
+        <item> Komik </item>
+        <item> Madu Rasa </item>
+        <item> Minyak Kayu Putih Small </item>
+        <item> Kapas </item>
+        <item> Tisu </item>
+        <item> Talek </item>
+        <item> Masker </item>
+        <item> Ultra Flu </item>
+
+        <item> ---PAMPERS--- </item>
+        <item> Pampers XXL </item>
+        <item> Pampers XL </item>
+        <item> Pampers L </item>
+        <item> Pampers M </item>
+        <item> Charm Night </item>
+        <item> Charm Biasa </item>
+    </string-array>
+
+
+    <string-array name="sabun">
+        <item> == SABUN == </item>
+        <item> Lifeboy </item>
+        <item> Nuvo Small </item>
+        <item> Nuvo Medium </item>
+        <item> ZEN </item>
+        <item> Shinzui </item>
+        <item> GIV </item>
+        <item> Detol </item>
+        <item> Odol </item>
+        <item> Rexona Women </item>
+        <item> Rexona Men </item>
+        <item> Garnier Renceng </item>
+        <item> Fair and Lovely </item>
+        <item> Kapur Barus </item>
+
+    </string-array>
+
+    <string-array name="shampo">
+        <item> == SHAMPO == </item>
+        <item> Pantine Kondisioner </item>
+        <item> Sunslik Kondisioner </item>
+        <item> Zinc aneka macam </item>
+        <item> Lifeboy aneka macam </item>
+        <item> Head and Shoulder </item>
+        <item> Pantine aneka macam </item>
+        <item> Dove aneka macam </item>
+        <item> Cleare aneka macam </item>
+        <item> KIT </item>
+
+    </string-array>
+
+    <string-array name="cuciPiring">
+        <item> == CUCI PIRING == </item>
+        <item> Sunlight Small </item>
+        <item> Sunlight Medium </item>
+        <item> Mama Lemon Small </item>
+        <item> Mama Lemon Medium </item>
+        <item> Ekonomi Small </item>
+        <item> Ekonomi Medium </item>
+        <item> Ekonomi Big </item>
+
+    </string-array>
+
+    <string-array name="sabunCuci">
+        <item> == SABUN CUCI == </item>
+        <item> Rinso Bubuk </item>
+        <item> Rinso Cair </item>
+        <item> Soklin Liquid </item>
+        <item> Soklin Bubuk Small </item>
+        <item> Soklin Bubuk Medium </item>
+        <item> Soklin Antiseptik </item>
+        <item> Daia </item>
+        <item> Jazz 1 </item>
+        <item> Molto </item>
+        <item> Downie </item>
+        <item> Wipol </item>
+        <item> Soklin Lantai </item>
+        <item> Rapika </item>
+        <item> Kispray Gold </item>
+        <item> Kispray Biasa </item>
+
+    </string-array>
+
+    <string-array name="bumbu">
+        <item> == BUMBU == </item>
+        <item> Racik Nasi Goreng Ekstra Pedas </item>
+        <item> Racik Nasi Goreng Biasa </item>
+        <item> Racik Tempe </item>
+        <item> Racik Ayam </item>
+        <item> Racik Ikan </item>
+        <item> Racik Sayur Asem </item>
+        <item> Racik Sayur Sop </item>
+        <item> Racik Sayur Lodeh </item>
+        <item> Racik Kangkung </item>
+        <item> Sajiku Tepung </item>
+        <item> Saori Saus Tiram </item>
+        <item> Desaku Sambel Goreng </item>
+        <item> Desaku Balado </item>
+        <item> Desaku Kari </item>
+        <item> Desaku Ketumbar Bubuk </item>
+        <item> Dapur Kita Ketumbar Bubuk </item>
+        <item> Dapur Kita Balado </item>
+        <item> Dapur Kita Jinten Bubuk </item>
+        <item> Dapur Kita Bawang Putih Bubuk </item>
+        <item> Dapur Kita Kayu Manis Bubuk </item>
+        <item> Dapur Kita Kencur Bubuk </item>
+        <item> Dapur Kita Kunyit </item>
+        <item> Berlian Pala Bubuk </item>
+        <item> Daisy Lada Bubuk </item>
+        <item> Ladaku Merica Bubuk </item>
+        <item> Uleg Sambel Terasi </item>
+        <item> Bon Cabe </item>
+        <item> Aida </item>
+        <item> Mama Suka Kuah Bakso </item>
+        <item> Terasi ABC </item>
+
+    </string-array>
+
+    <string-array name="bumbuGlondong">
+        <item> == BUMBU GLONDONG == </item>
+        <item> Gula Jawa Renceng </item>
+        <item> Asem Renceng </item>
+        <item> Bawang Putih Renceng </item>
+        <item> Kemiri Renceng </item>
+        <item> Merica Renceng </item>
+    </string-array>
+
+    <string-array name="caos">
+        <item> == CAOS == </item>
+        <item> ABC Kecil </item>
+        <item> ABC Medium </item>
+        <item> ABC Besar </item>
+        <item> Indofood Small </item>
+    </string-array>
+
+    <string-array name="kecap">
+        <item> == KECAP == </item>
+        <item> Bango Medium </item>
+        <item> Bango Big </item>
+        <item> Sedap Small </item>
+        <item> Sedap Big </item>
+        <item> ABC Small </item>
+        <item> ABC Big </item>
+
+    </string-array>
+
+    <string-array name="mie">
+        <item> == MIE INSTAN == </item>
+        <item> Sedap Goreng </item>
+        <item> Sedap Ayam Limau </item>
+        <item> Sedap Korea </item>
+        <item> Sedap Kari </item>
+        <item> Sedap Ayam Bawang </item>
+        <item> Sedap Soto </item>
+        <item> Sedap Bakso </item>
+        <item> Sedap Singapure </item>
+        <item> Indomie Goreng </item>
+        <item> Indomie Rendang </item>
+        <item> Indomie Ayam Geprek </item>
+        <item> Indomie Aceh  </item>
+        <item> Indomie Ayam Bawang Spesial </item>
+        <item> Indomie Soto Banjar </item>
+        <item> Indomie Seblak Jeletot </item>
+        <item> Supermie Ayam Bawang </item>
+        <item> Sarimi Ayam Bawang </item>
+        <item> Sukses Ayam Kecap </item>
+        <item> Sukses Ayam Kremes </item>
+        <item> Sukses Soto </item>
+        <item> Sukses Kari </item>
+        <item> Sukses Ayam Bawang </item>
+
+    </string-array>
+
+    <string-array name="minuman">
+        <item> == MINUMAN == </item>
+        <item> Lemineral 600ml </item>
+        <item> Lemineral 330ml </item>
+        <item> Susu Milku </item>
+        <item> Susu kotak </item>
+        <item> Larutan Botol </item>
+        <item> Larutan Kaleng </item>
+        <item> Ager-ager Walet </item>
+        <item> Nutrijel </item>
+    </string-array>
+
+    <string-array name="sembako">
+        <item> == SEMBAKO == </item>
+        <item> Beras 1 Kg </item>
+        <item> Beras 1/2 Kg </item>
+        <item> Beras 3/4 Kg </item>
+        <item> Gula 1 Kg </item>
+        <item> Gula 1/2 Kg </item>
+        <item> Gula 1/4 Kg </item>
+        <item> Tepung Beras (Glepongan) 1 Kg </item>
+        <item> Tepung Beras (Glepongan) 1/2 Kg </item>
+        <item> Tepung Beras (Glepongan) 1/4 Kg </item>
+        <item> Tepung Beras (Glepongan) 1 Ons </item>
+        <item> Tepung Aci 1 Kg </item>
+        <item> Tepung Aci 1/2 Kg </item>
+        <item> Tepung Aci 1/4 Kg </item>
+        <item> Tepung Aci 1 Ons </item>
+        <item> Tepung Padi </item>
+        <item> Tepung Trigu 1 Kg </item>
+        <item> Tepung Trigu 1/2 Kg </item>
+        <item> Tepung Trigu 1/4 Kg </item>
+        <item> Tepung Trigu 1 Ons </item>
+        <item> Telor 1 Butir </item>
+        <item> Telor 1 Kg </item>
+        <item> Telor 1/2 Kg </item>
+        <item> Telor 1/4 Kg </item>
+        <item> Minyak Goreng Renceng </item>
+        <item> Minyak Goreng 1 Kg </item>
+        <item> Minyak Goreng 1/2 Kg </item>
+        <item> Minyak Goreng 1/4 Kg </item>
+        <item> Sari Kecut </item>
+    </string-array>
+
+    <string-array name="rokok">
+        <item> == ROKOK == </item>
+        <item> Sampoerna Mild </item>
+        <item> Surya 16 </item>
+        <item> Surya 12 </item>
+        <item> Surya Isi 6 Batang </item>
+        <item> Surya Isi 8 </item>
+        <item> Filter </item>
+        <item> FIlter 1/2 </item>
+        <item> Signature </item>
+        <item> Signature 1/2 </item>
+        <item> Pro Mild Merah </item>
+        <item> Gudang Garam Merah </item>
+        <item> Dji Sam Soe </item>
+        <item> Rokok 1 Batang </item>
+    </string-array>
+
+    <string-array name="obat">
+        <item> == OBAT == </item>
+        <item> Bodrex Biasa 1 Biji </item>
+        <item> Bodrex Biasa 2 Biji </item>
+        <item> Bodrex Biasa 3 Biji </item>
+        <item> Bodrexin </item>
+        <item> Bodrex PE </item>
+        <item> Bodrex Migran </item>
+        <item> Bodrex Extra </item>
+        <item> Oskadon Sakit Kepala </item>
+        <item> Oskadon SP </item>
+        <item> Paramex Biasa </item>
+        <item> Mixagrip Flu dan Batuk </item>
+        <item> Konidin </item>
+        <item> Naspro </item>
+        <item> Pilkita </item>
+        <item> Supertetra </item>
+        <item> Neo Rheumacyl </item>
+        <item> Entrostop </item>
+        <item> Fatigon </item>
+        <item> Promax </item>
+        <item> Diapet </item>
+        <item> Sanmol </item>
+        <item> Puyer 16 </item>
+        <item> Puyer 19 </item>
+        <item> Antimo </item>
+        <item> Tolak Angin </item>
+        <item> Tolak Angin Anak </item>
+        <item> Tolak Linu </item>
+        <item> Komik </item>
+        <item> Madu Rasa </item>
+        <item> Minyak Kayu Putih Small </item>
+        <item> Kapas </item>
+        <item> Tisu </item>
+        <item> Talek </item>
+        <item> Masker </item>
+        <item> Ultra Flu </item>
+    </string-array>
+
+    <string-array name="pampers">
+        <item> == PAMPERS == </item>
+        <item> Pampers XXL </item>
+        <item> Pampers XL </item>
+        <item> Pampers L </item>
+        <item> Pampers M </item>
+        <item> Charm Night </item>
+        <item> Charm Biasa </item>
+    </string-array>
+
+
+</resources>

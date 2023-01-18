@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableRow xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rowlay"
+    android:background="#ffffff"
+    android:padding="5dp">
+<!--    <TextView-->
+<!--        android:layout_width="32dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:id="@+id/idno"-->
+<!--        android:text="1" />-->
+    <TextView
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/idnama"/>
+    <TextView
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/idnilai_a"
+        android:textAlignment="center"/>
+    <TextView
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/idnilai_b" />
+    <TextView
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/idnilai_total" />
+</TableRow>
